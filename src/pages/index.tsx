@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       </Text>
 
       <Text weight="bold" color="dimmed">
-        99's / Honda GB350 Rider / Engineer / Game Lover
+        99&apos;s / Honda GB350 Rider / Engineer / Game Lover
       </Text>
 
       <Stack align="center" spacing={6}>
