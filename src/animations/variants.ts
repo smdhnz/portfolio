@@ -1,4 +1,4 @@
-import { HTMLMotionProps, Variants } from "framer-motion";
+import type { HTMLMotionProps, Variants } from "framer-motion";
 
 /** ページの遷移アニメーション */
 export const pageTransition: HTMLMotionProps<"div"> = {

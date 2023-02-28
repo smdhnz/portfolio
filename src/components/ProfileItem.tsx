@@ -15,7 +15,7 @@ export const ProfileItem = (props: { title: string; children: ReactNode }) => {
   });
 
   useEffect(() => {
-    controls.start(inView ? "visible" : "hidden");
+    controls.start(inView ? "visible" : "hidden").catch((e) => console.log(e));
   }, [controls, inView]);
 
   return (
