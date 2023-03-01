@@ -2,6 +2,7 @@ import { type AppType } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { AnimatePresence } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react";
 
 import { api } from "~/utils/api";
 import { RouterTransition } from "~/components/RouterTransition";
@@ -19,6 +20,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
+
+      <Analytics />
 
       <MantineProvider
         withGlobalStyles
