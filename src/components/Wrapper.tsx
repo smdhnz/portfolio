@@ -10,15 +10,15 @@ export const Wrapper = (props: { children: ReactNode }) => {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "#F9F9F9",
+        background: "#f9f9f9",
         color: "#1f1f1f",
       }}
     >
       <motion.div {...pageTransition}>
         <Group pos="fixed" top={24} right={24} spacing="lg">
           <Link href="/">Profile</Link>
-          <Link href="/illusts">Illusts</Link>
-          <Link href="/Articles">Articles</Link>
+          <Link href="/illust">Illust</Link>
+          <Link href="/article">Article</Link>
         </Group>
 
         <Container size="sm" py={125}>
@@ -32,6 +32,12 @@ export const Wrapper = (props: { children: ReactNode }) => {
                 radius={100}
                 withPlaceholder
                 mx="auto"
+                sx={{
+                  borderColor: "#111",
+                  borderStyle: "solid",
+                  borderWidth: 1,
+                  borderRadius: 100,
+                }}
               />
               <Text weight="bold" size={60} mx="auto">
                 Fumiya Kato
