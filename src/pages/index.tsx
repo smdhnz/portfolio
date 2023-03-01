@@ -1,5 +1,5 @@
 import { type NextPage } from "next";
-import { Container, Stack, Image, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
 
 import { ProfileItem } from "~/components/ProfileItem";
 
