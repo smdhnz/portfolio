@@ -8,7 +8,7 @@ export const Link = (props: TextProps & { href: string }) => {
       component={NextLink}
       scroll={false}
       weight="bold"
-      size="lg"
+      size="md"
       sx={{
         transition: "transform 0.1s",
         "&:hover": {
