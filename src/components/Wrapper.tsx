@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 import { Link } from "./Link";
 import { pageTransition } from "~/animations/variants";
+import { SnsLinks } from "./SnsLinks";
 
 export const Wrapper = (props: { children: ReactNode }) => {
   return (
@@ -42,6 +43,7 @@ export const Wrapper = (props: { children: ReactNode }) => {
               <Text weight="bold" size={60} mx="auto">
                 Fumiya Kato
               </Text>
+              <SnsLinks mx="auto" />
             </Stack>
             {props.children}
           </Stack>
