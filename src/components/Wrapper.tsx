@@ -10,7 +10,7 @@ export const Wrapper = (props: { children: ReactNode }) => {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "#F9F9F9",
+        background: "#f9f9f9",
         color: "#1f1f1f",
       }}
     >
@@ -32,6 +32,12 @@ export const Wrapper = (props: { children: ReactNode }) => {
                 radius={100}
                 withPlaceholder
                 mx="auto"
+                sx={{
+                  borderColor: "#111",
+                  borderStyle: "solid",
+                  borderWidth: 1,
+                  borderRadius: 100,
+                }}
               />
               <Text weight="bold" size={60} mx="auto">
                 Fumiya Kato
