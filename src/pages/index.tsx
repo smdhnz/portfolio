@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Text weight="bold" size={48} mx="auto" color="dimmed">
-        Profile
+        about
       </Text>
 
       <ProfileItem title="好きなこと">

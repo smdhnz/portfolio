@@ -17,9 +17,8 @@ export const Wrapper = (props: { children: ReactNode }) => {
     >
       <motion.div {...pageTransition}>
         <Group pos="fixed" top={24} right={24} spacing="lg">
-          <Link href="/">Profile</Link>
-          <Link href="/illust">Illust</Link>
-          <Link href="/article">Article</Link>
+          <Link href="/">about</Link>
+          <Link href="/post">post</Link>
         </Group>
 
         <Container size="sm" py={125}>
