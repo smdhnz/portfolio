@@ -5,8 +5,9 @@ import {
   completeNavigationProgress,
   NavigationProgress,
 } from "@mantine/nprogress";
+import type { MantineColor } from "@mantine/core";
 
-export function RouterTransition() {
+export function RouterTransition({ color }: { color: MantineColor }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -25,5 +26,5 @@ export function RouterTransition() {
     };
   }, [router.asPath]);
 
-  return <NavigationProgress autoReset={true} color="gray" />;
+  return <NavigationProgress autoReset={true} color={color} />;
 }

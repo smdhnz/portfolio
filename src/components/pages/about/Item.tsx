@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 import { fadeInUp } from "~/animations/variants";
 
 /** プロフィールのアイテム **/
-export const ProfileItem = (props: { title: string; children: ReactNode }) => {
+export const Item = (props: { label: string; children: ReactNode }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({
     threshold: 0.25,
@@ -27,7 +27,7 @@ export const ProfileItem = (props: { title: string; children: ReactNode }) => {
     >
       <Stack spacing="xs">
         <Text weight="bold" size={24}>
-          {props.title}
+          {props.label}
         </Text>
         <Text>{props.children}</Text>
       </Stack>
