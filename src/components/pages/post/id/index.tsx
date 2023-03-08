@@ -8,7 +8,7 @@ export const PostOne: NextPage = () => {
   return (
     <Wrapper>
       <Stack spacing={48} w="100%">
-        <Title label="post title" mx="auto" />
+        <Title mx="auto">post title</Title>
       </Stack>
     </Wrapper>
   );

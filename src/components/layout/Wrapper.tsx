@@ -28,9 +28,9 @@ export const Wrapper = (props: { children: ReactNode }) => {
             height={200}
             width={200}
             sx={{
-              borderColor: "#111",
+              borderColor: "#f4f4f4",
               borderStyle: "solid",
-              borderWidth: 1,
+              borderWidth: 3,
               borderRadius: 100,
             }}
           />

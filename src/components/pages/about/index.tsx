@@ -9,7 +9,7 @@ export const About: NextPage = () => {
   return (
     <Wrapper>
       <Stack spacing={48} w="100%">
-        <Title label="about" mx="auto" />
+        <Title mx="auto">about</Title>
         <Item label="好きなこと">
           バイク / ゲーム / 旅行 / 飲み会 / お絵描き
         </Item>
