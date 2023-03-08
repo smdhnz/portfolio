@@ -1,4 +1,4 @@
-import { type AppType } from "next/app";
+import type { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { AnimatePresence } from "framer-motion";
@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { RouterTransition } from "~/components/func";
 
-export const App: AppType = ({ Component, pageProps, router }) => {
+export const App = ({ Component, pageProps, router }: AppProps) => {
   return (
     <>
       <Head>
