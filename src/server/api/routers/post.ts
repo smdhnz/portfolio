@@ -6,22 +6,35 @@ export const postRouter = createTRPCRouter({
   list: publicProcedure
     .input(
       z.object({
-        take: z.number().min(1).max(10).nullish(),
-        page: z.number().min(1),
+        limit: z.number().min(1).max(10).nullish(),
+        cursor: z.number().nullish(),
       })
     )
     .query(({ input }) => {
-      const take = input.take ?? 5;
-      const offset = (input.page - 1) * take;
+      const limit = input.limit ?? 5;
+      const cursor = input.cursor;
 
-      const items = "abcdefghijklmnopqrstuvwxyz".split(",").map((v, i) => ({
-        value: v,
+      const data = "abcdefghijklmnopqrstuvwxyz".split("").map((v, i) => ({
         id: i,
+        title: v,
+        images: [{ url: "/image.jpg" }],
       }));
 
+      const start = cursor ? data.findIndex((d) => d.id === cursor) : 0;
+      const end = start + limit + 1;
+      const items = data.slice(start, end);
+
+      if (items.length <= limit)
+        return {
+          items,
+          nextCursor: undefined,
+        };
+
+      const lastItem = items.pop();
+
       return {
-        items: items.slice(offset, input.page * take),
-        maxPage: Math.ceil(items.length / take),
+        items,
+        nextCursor: lastItem!.id,
       };
     }),
 });
