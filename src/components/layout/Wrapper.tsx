@@ -33,6 +33,7 @@ export const Wrapper = (props: { children: ReactNode }) => {
               borderWidth: 3,
               borderRadius: 100,
             }}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <Text weight="bold" size={60}>
             fumiya kato
