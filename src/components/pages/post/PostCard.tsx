@@ -33,12 +33,10 @@ export const PostCard = ({
       variants={fadeInUp}
     >
       <Card
-        component={Flex}
-        align="center"
         shadow="xl"
         withBorder
         radius="md"
-        h={110}
+        bg="#222222"
         p={0}
         sx={{
           transition: "transform 0.15s",
@@ -47,22 +45,24 @@ export const PostCard = ({
           },
         }}
       >
-        <Box w={160} h="100%" bg="#1a1a1a" ta="center">
-          <Image
-            src={post.images[0]?.url ?? ""}
-            alt={post.title}
-            width={256}
-            height={256}
-            style={{
-              width: "auto",
-              height: "100%",
-            }}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </Box>
-        <Text ta="center" p={32} weight="bold" size={32}>
-          {post.title}
-        </Text>
+        <Flex align="center" h={110}>
+          <Box w={160} h="100%" bg="#1a1a1a" ta="center">
+            <Image
+              src={post.images[0]?.url ?? ""}
+              alt={post.title}
+              width={256}
+              height={256}
+              style={{
+                width: "auto",
+                height: "100%",
+              }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </Box>
+          <Text ta="center" p={32} weight="bold" size={32}>
+            {post.title}
+          </Text>
+        </Flex>
       </Card>
     </motion.div>
   );

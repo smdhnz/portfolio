@@ -14,7 +14,7 @@ import { pageTransition } from "~/animations/variants";
 export const Wrapper = (props: { children: ReactNode }) => {
   return (
     <motion.div {...pageTransition}>
-      <Group pos="fixed" top={24} right={24} spacing="lg">
+      <Group pos="fixed" top={24} right={24} spacing="lg" sx={{ zIndex: 99 }}>
         <Link href="/">about</Link>
         <Link href="/post">post</Link>
       </Group>
