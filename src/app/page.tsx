@@ -9,10 +9,11 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { getAuthor, getPosts } from "@/lib/utils";
 import { env } from "@/env";
+import { Gallery } from "./gallery";
 
 export default async function HomePage() {
   const auther = await getAuthor();
-  const posts = await getPosts(10);
+  const posts = await getPosts(5);
 
   return (
     <main className="w-full my-32">
@@ -57,23 +58,7 @@ export default async function HomePage() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center w-full gap-4">
-        {posts.map(({ id, content, attachments: images }) => {
-          return (
-            <div className="w-[300px]" key={id}>
-              <AspectRatio ratio={1 / 1}>
-                <Image
-                  src={images[0]?.url ?? ""}
-                  alt={images[0]?.filename ?? ""}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="rounded-xl border"
-                />
-              </AspectRatio>
-            </div>
-          );
-        })}
-      </div>
+      <Gallery initialPosts={posts} />
     </main>
   );
 }

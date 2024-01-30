@@ -1,7 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { env } from "@/env";
-import { StringToBoolean } from "class-variance-authority/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -22,16 +21,17 @@ export type Post = {
   attachments: Image[];
 };
 
-export async function getPosts(limit: number): Promise<Post[]> {
-  const res = await fetch(
-    `${env.BASE_URL}/channels/${env.CHANNEL_ID}/messages?limit=${limit}`,
-    {
-      cache: "no-cache",
-      headers: {
-        Authorization: env.AUTH_TOKEN,
-      },
+export async function getPosts(limit: number, beforeId?: string) {
+  const url =
+    `${env.BASE_URL}/channels/${env.CHANNEL_ID}/messages?limit=${limit}` +
+    (beforeId ? `&before=${beforeId}` : "");
+
+  const res = await fetch(url, {
+    cache: "no-cache",
+    headers: {
+      Authorization: env.AUTH_TOKEN,
     },
-  );
+  });
 
   if (!res.ok) return [];
 
@@ -44,7 +44,9 @@ export async function getPosts(limit: number): Promise<Post[]> {
 }
 
 export async function getAuthor() {
-  const res = await fetch(`${env.BASE_URL}/users/@me`, {
+  const url = `${env.BASE_URL}/users/@me`;
+
+  const res = await fetch(url, {
     cache: "no-cache",
     headers: {
       Authorization: env.AUTH_TOKEN,
