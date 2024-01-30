@@ -26,6 +26,7 @@ export async function getPosts(limit: number): Promise<Post[]> {
   const res = await fetch(
     `${env.BASE_URL}/channels/${env.CHANNEL_ID}/messages?limit=${limit}`,
     {
+      cache: "no-cache",
       headers: {
         Authorization: env.AUTH_TOKEN,
       },
@@ -44,6 +45,7 @@ export async function getPosts(limit: number): Promise<Post[]> {
 
 export async function getAuthor() {
   const res = await fetch(`${env.BASE_URL}/users/@me`, {
+    cache: "no-cache",
     headers: {
       Authorization: env.AUTH_TOKEN,
     },
