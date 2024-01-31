@@ -1,9 +1,9 @@
 import "@/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({
+const notoSansJp = Noto_Sans_JP({
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
-      <body className={`font-sans ${inter.variable}`}>
+      <body className={`font-sans ${notoSansJp.variable}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
