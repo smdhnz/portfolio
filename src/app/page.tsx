@@ -16,16 +16,15 @@ export default async function HomePage() {
   const posts = await getPosts();
 
   return (
-    <main className="w-full my-32">
-      <div className="w-full flex flex-col items-center gap-6 mb-32">
-        <div className="w-[64px]">
+    <main className="w-full my-24">
+      <div className="w-full flex flex-col items-center gap-6 mb-24 animate-slide-top">
+        <div className="w-[64px] rounded-full border-2 overflow-hidden">
           <AspectRatio ratio={1 / 1}>
             <Image
               src={auther?.avatar ?? ""}
               alt="profile image"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="rounded-full border"
             />
           </AspectRatio>
         </div>
