@@ -21,7 +21,13 @@ export function PostContent({ post }: { post: Post }) {
                   alt={img.filename}
                   width={img.width}
                   height={img.height}
+                  quality="100"
                   className="object-contain object-center h-full w-full"
+                  loader={() =>
+                    `${img.url}?width=${Math.round(
+                      img.width * 0.3,
+                    )}&height=${Math.round(img.height * 0.3)}`
+                  }
                 />
               </AspectRatio>
             </CarouselItem>

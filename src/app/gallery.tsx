@@ -49,6 +49,7 @@ export function Gallery({ initialPosts }: Props) {
                     alt={post.attachments[0]?.filename ?? ""}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    quality="65"
                     className="object-contain object-center h-full w-full"
                   />
                 </AspectRatio>
