@@ -10,6 +10,10 @@ export const env = createEnv({
     INSTAGRAM_URL: z.string().url(),
     TWITTER_URL: z.string().url(),
     GITHUB_URL: z.string().url(),
+    NUMBER_OF_FETCH: z
+      .string()
+      .transform((s) => parseInt(s))
+      .pipe(z.number()),
   },
   client: {},
   runtimeEnv: {
@@ -20,6 +24,7 @@ export const env = createEnv({
     INSTAGRAM_URL: process.env.INSTAGRAM_URL,
     TWITTER_URL: process.env.TWITTER_URL,
     GITHUB_URL: process.env.GITHUB_URL,
+    NUMBER_OF_FETCH: process.env.NUMBER_OF_FETCH,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,

@@ -13,7 +13,7 @@ import { Gallery } from "./gallery";
 
 export default async function HomePage() {
   const auther = await getAuthor();
-  const posts = await getPosts(5);
+  const posts = await getPosts();
 
   return (
     <main className="w-full my-32">

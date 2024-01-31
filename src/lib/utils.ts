@@ -21,9 +21,9 @@ export type Post = {
   attachments: Image[];
 };
 
-export async function getPosts(limit: number, beforeId?: string) {
+export async function getPosts(beforeId?: string) {
   const url =
-    `${env.BASE_URL}/channels/${env.CHANNEL_ID}/messages?limit=${limit}` +
+    `${env.BASE_URL}/channels/${env.CHANNEL_ID}/messages?limit=${env.NUMBER_OF_FETCH}` +
     (beforeId ? `&before=${beforeId}` : "");
 
   const res = await fetch(url, {

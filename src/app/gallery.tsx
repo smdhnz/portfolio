@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useInView } from "react-intersection-observer";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import type { Post } from "@/lib/utils";
@@ -20,7 +21,7 @@ export function Gallery({ initialPosts }: Props) {
   const [last, setLast] = useState(false);
 
   const onClick = async () => {
-    const nextPosts = await loadMorePosts(5, beforeId);
+    const nextPosts = await loadMorePosts(beforeId);
 
     if (nextPosts.length > 0) {
       setBeforeId(nextPosts[nextPosts.length - 1]?.id);
