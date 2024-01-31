@@ -12,13 +12,11 @@ type Props = {
 };
 
 export function Gallery({ initialPosts }: Props) {
+  const initialBedoreId = initialPosts[initialPosts.length - 1]?.id;
+
   const [posts, setPosts] = useState<Post[]>(initialPosts);
-  const [beforeId, setBeforeId] = useState(
-    initialPosts[initialPosts.length - 1]?.id,
-  );
-
+  const [beforeId, setBeforeId] = useState(initialBedoreId);
   const [last, setLast] = useState(false);
-
   const { ref, inView } = useInView();
 
   const loadMore = async () => {
@@ -33,9 +31,7 @@ export function Gallery({ initialPosts }: Props) {
   };
 
   useEffect(() => {
-    if (inView) {
-      loadMore();
-    }
+    if (inView) loadMore();
   }, [inView]);
 
   return (
