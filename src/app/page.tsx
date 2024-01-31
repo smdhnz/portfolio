@@ -32,12 +32,12 @@ export default async function HomePage() {
 
         <h1 className="text-xl font-bold">Fumiya Kato</h1>
 
-        <p className="text-muted text-center">
+        <p className="text-zinc-500 text-center font-bold">
           Web developer & Data scientist
           <br />I love Overwatch
         </p>
 
-        <div className="flex gap-2 text-muted">
+        <div className="flex gap-2 text-zinc-500">
           <Button asChild variant="ghost" size="icon">
             <Link href={env.INSTAGRAM_URL}>
               <InstagramLogoIcon className="h-4 w-4" />
