@@ -14,6 +14,7 @@ export const env = createEnv({
       .string()
       .transform((s) => parseInt(s))
       .pipe(z.number()),
+    DEPLOY_URL: z.string().url(),
   },
   client: {},
   runtimeEnv: {
@@ -25,6 +26,7 @@ export const env = createEnv({
     TWITTER_URL: process.env.TWITTER_URL,
     GITHUB_URL: process.env.GITHUB_URL,
     NUMBER_OF_FETCH: process.env.NUMBER_OF_FETCH,
+    DEPLOY_URL: process.env.DEPLOY_URL,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,

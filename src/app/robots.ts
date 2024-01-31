@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { env } from "@/env";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "https://portfolio-smdhnz.vercel.app/sitemap.xml",
+    sitemap: `${env.DEPLOY_URL}/sitemap.xml`,
   };
 }
