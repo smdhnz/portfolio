@@ -42,7 +42,7 @@ export function Gallery({ initialPosts }: Props) {
         {posts.map((post) => (
           <Dialog key={post.id}>
             <DialogTrigger>
-              <div className="w-[300px] rounded-xl border-2 overflow-hidden animate-slide-top bg-black">
+              <div className="w-[300px] rounded-xl border-2 overflow-hidden animate-slide-top bg-black hover:ring-4 ring-white transition-all">
                 <AspectRatio ratio={1 / 1}>
                   <Image
                     src={post.attachments[0]?.url ?? ""}
