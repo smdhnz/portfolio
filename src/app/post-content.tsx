@@ -4,6 +4,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import type { Post } from "@/lib/utils";
@@ -33,6 +35,8 @@ export function PostContent({ post }: { post: Post }) {
             </CarouselItem>
           ))}
         </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
       </Carousel>
       {post.content && (
         <DialogFooter className="sm:justify-start border-t p-6">
