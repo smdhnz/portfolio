@@ -35,7 +35,7 @@ export function PostContent({ post }: { post: Post }) {
         </CarouselContent>
       </Carousel>
       {post.content && (
-        <DialogFooter className="sm:justify-start border-t p-3">
+        <DialogFooter className="sm:justify-start border-t p-6">
           {post.content}
         </DialogFooter>
       )}
