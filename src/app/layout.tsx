@@ -33,6 +33,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" suppressHydrationWarning>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="CgpgXel3FwFmlELiFJ4N2bPWuJf0HXXduVkJxzsbT2s"
+        />
+      </head>
       <body className={`font-sans ${notoSansJp.variable}`}>
         <ThemeProvider
           attribute="class"
