@@ -1,0 +1,96 @@
+---
+title: "さらばVS Code。2026年、俺のNeovim設定はこれだ。"
+date: "2026-01-20"
+description: "重いElectron製エディタとは決別しました。高速、軽量、そして自由。俺の最新のinit.luaを解説します。"
+categories: ["Tech"]
+thumbnail: "/images/neovim-setup.png"
+---
+
+# さらばVS Code、ようこそNeovim
+
+長年使ってきたVS Codeとお別れして、Neovimに完全移行した。
+VS Codeは便利だけど、やっぱり起動の遅さやメモリ消費が気になり始めたのがきっかけ。
+
+今回は、2026年1月20日現在の俺の `init.lua` を晒しつつ、どこにこだわっているかを紹介する。
+
+## なぜNeovimなのか
+
+答えはシンプル。「**速い**」から。
+キーを叩いた瞬間に文字が出る。このレスポンスの良さは、一度慣れると他のエディタには戻れない。
+
+あと、マウスを使わずにキーボードだけで完結するのもデカい。
+思考を止めずにコードを書き続けられる感覚は、Vimならではだと思う。
+
+## こだわりの設定ポイント
+
+設定ファイル（`init.lua`）は [GitHub](https://github.com/smdhnz/dotfiles/blob/main/init.lua) で公開しているが、ここでは特にこだわっているポイントをピックアップする。
+
+### 1. 爆速起動のための最適化
+
+まず冒頭でバイトコードキャッシュを有効化している。これだけで起動速度が変わる。
+
+```lua
+-- ====================
+-- 高速化: バイトコードキャッシュ有効化
+-- ====================
+if vim.loader then
+  vim.loader.enable()
+end
+```
+
+そして、不要な標準プラグインは容赦なく無効化する。gzipとかtarとか、エディタで直接開くことなんてほぼないし。
+
+```lua
+-- 不要なプラグイン無効化
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+g.loaded_gzip = 1
+-- ... (省略) ...
+g.loaded_python3_provider = 0
+```
+
+### 2. Rust製補完エンジン `blink.cmp`
+
+補完には `nvim-cmp` ではなく、最近話題の `blink.cmp` を採用した。
+Rust製で爆速。大量の候補が出ても一瞬で表示されるのが気持ちいい。
+
+```lua
+  {
+    'saghen/blink.cmp',
+    version = '1.*',
+    opts = {
+      keymap = {
+        preset = 'enter',
+        ['<S-TAB>'] = { 'select_prev', 'fallback' },
+        ['<TAB>'] = { 'select_next', 'fallback' },
+      },
+      -- ...
+    },
+  },
+```
+
+### 3. LSP環境も妥協しない
+
+TypeScriptの開発には `vtsls` を使用している。通常の `tsserver` よりも軽量で、Vue.jsのサポートも設定済み。
+これでフロントエンド開発もサクサクいける。
+
+```lua
+      -- Typescript & Vue
+      vim.lsp.config("vtsls", {
+        on_attach = on_attach,
+        root_markers = { "package.json", "tsconfig.json" },
+        workspace_required = true,
+        -- ...
+      })
+```
+
+## 設定ファイルについて
+
+ここでは紹介しきれない細かいキーマップやプラグインの設定は、[GitHubのdotfiles](https://github.com/smdhnz/dotfiles/blob/main/init.lua) で公開している。
+環境によって多少の調整は必要だと思うけど、参考になれば。
+
+## 終わりに
+
+Neovimへの移行は最初はハードルが高いかもしれないけど、設定をいじくり回して自分だけの最強エディタを作る過程も含めて楽しめる人にはおすすめ。
+
+興味があればぜひ使ってみてほしい。

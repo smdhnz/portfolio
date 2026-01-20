@@ -13,6 +13,17 @@
 - **スタイリング**: Tailwind CSS
 - **画像生成**: Nano Banana
 
+## ブログ運用ルール
+
+### カテゴリ定義
+
+ブログ記事のカテゴリ（`categories`）は、以下の大分類から選択してください。粒度が細かくなりすぎないよう、原則としてこれら以外のカテゴリは使用しません。
+
+- **Tech**: プログラミング全般、ツール設定、その他の技術。
+- **Release**: 個人開発アプリやサービスのリリース告知、成果物の紹介。
+- **Life**: 日常、趣味、雑記、ポエム。
+- **Career**: 仕事、フリーランス、働き方、キャリア論。
+
 ## コーディング規約
 
 - **コンポーネント**: ReactのFunction Componentで実装します。
@@ -31,3 +42,85 @@
   - **Lint**: `bun run lint` を実行し、ESLintによる静的解析を行います。常に警告やエラーがない状態を維持します。
 - **フォーマット**:
   - Prettierによるコードフォーマットを適用します。
+
+## Gitコミットルール
+
+コミットメッセージは以下のフォーマットに従い、**日本語**で記述してください。
+
+```
+<プレフィックス>: <タイトル>
+
+[本文（必要な場合）]
+```
+
+### プレフィックス
+
+- **feat**: 新機能の追加
+- **fix**: バグ修正
+- **docs**: ドキュメントのみの変更
+- **style**: コードの動作に影響しない変更（空白、フォーマットなど）
+- **refactor**: バグ修正や機能追加を含まないコードの変更（リファクタリング）
+- **perf**: パフォーマンスを向上させるコードの変更
+- **test**: テストの追加や既存のテストの修正
+- **chore**: ビルドプロセスやツールの変更、ライブラリの更新など
+
+### 例
+
+```
+feat: ブログ記事一覧ページにページネーションを追加
+fix: モバイル表示時のヘッダー崩れを修正
+docs: GEMINI.mdにコミットルールを追記
+```
+
+## Browser Automation
+
+Use `agent-browser` for web automation. Run `agent-browser --help` for all commands.
+
+Core workflow:
+
+1. `agent-browser open <url>` - Navigate to page
+2. `agent-browser snapshot -i` - Get interactive elements with refs (@e1, @e2)
+3. `agent-browser click @e1` / `fill @e2 "text"` - Interact using refs
+4. Re-snapshot after page changes
+
+## ブログ作成の手引き
+
+新しいブログ記事を作成する際は、以下の手順に従ってください。
+
+### 1. 記事ファイルの作成
+
+`content/posts/` ディレクトリ内に `.mdx` ファイルを新規作成します。
+ファイル名はURLの一部（スラッグ）になるため、英数字とハイフンを使用してください。
+
+例: `my-new-post.mdx` -> `https://.../blog/my-new-post`
+
+### 2. Frontmatterの記述
+
+ファイルの先頭にYAML形式でメタデータを記述します。
+
+```yaml
+---
+title: "記事のタイトル"
+date: "2026-01-20" # 今日の日付
+description: "記事の概要（一覧ページに表示されます）"
+categories: ["Tech"] # 定義済みカテゴリから選択
+thumbnail: "/images/your-thumbnail.png" # Nano Bananaで生成推奨
+---
+```
+
+### 3. 本文の執筆 (MDX)
+
+Markdown記法で本文を記述します。
+MDXなので、Reactコンポーネントを直接埋め込むことも可能です。
+
+- **Youtube**: `<Youtube id="動画ID" />`
+- **コードブロック**: 通常のMarkdown記法（`\`\`\`lang ... `）でシンタックスハイライトが適用されます。
+
+### 4. サムネイル画像の生成
+
+Nano Bananaを使用して、記事の内容に合ったサムネイル画像を生成してください。
+生成された画像は `public/images/` に移動し、わかりやすい名前にリネームして使用します。
+
+### 5. カテゴリについて
+
+カテゴリは「ブログ運用ルール」セクションの定義に従って選択してください。

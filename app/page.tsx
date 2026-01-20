@@ -1,65 +1,324 @@
-import Image from "next/image";
+import SplitText from "@/components/SplitText";
+import BlurText from "@/components/BlurText";
+import TiltedCard from "@/components/TiltedCard";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight, Github } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="container mx-auto px-4 md:px-8 py-12 md:py-24 space-y-24">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center text-center space-y-6">
+        <SplitText
+          text="雰囲気エンジニアのブログ"
+          className="text-4xl md:text-6xl font-bold tracking-tighter"
+          delay={50}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+        <BlurText
+          text="技術とか、日常とか。気が向いたときに、なんとなく更新します。"
+          className="text-xl md:text-2xl text-muted-foreground max-w-2xl"
+          delay={200}
+        />
+        <div className="flex gap-4 pt-4">
+          <Button asChild size="lg">
+            <Link href="/blog">
+              Read Blog <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link href="https://github.com/smdhnz" target="_blank">
+              <Github className="mr-2 h-4 w-4" /> GitHub
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="space-y-8">
+        <h2 className="text-3xl font-bold tracking-tight text-center md:text-left border-b pb-2">
+          About Me
+        </h2>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+              <p>
+                基本的にはAIにコードを書かせて、自分はそれを眺めて頷くのが仕事です。
+              </p>
+              <p>
+                0から1を生み出すようなクリエイティブな苦労はなるべく避けたい。でも、新しい技術やライブラリを触って『おーすごい』ってなるのは大好き。
+              </p>
+              <p>
+                高専卒の悲しい性なのか、「これやって」と言われると、文句を垂れつつも結局なんでも実装してしまいます。基本は楽をして生きていたい、そんなエンジニアです。
+              </p>
+            </div>
+
+            <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm md:text-base border-t pt-4">
+              <dt className="font-semibold text-foreground">Name</dt>
+              <dd className="text-muted-foreground">Fumiya Kato</dd>
+
+              <dt className="font-semibold text-foreground">Job</dt>
+              <dd className="text-muted-foreground">フリーランスエンジニア</dd>
+
+              <dt className="font-semibold text-foreground self-start">
+                Likes
+              </dt>
+              <dd className="text-muted-foreground">
+                Overwatch2, レザークラフト, 自作PC, ガジェット,{" "}
+                <span className="line-through decoration-destructive decoration-2">
+                  筋トレ
+                </span>
+                （嘘）
+              </dd>
+            </dl>
+          </div>
+          <div className="flex justify-center">
+            {/* TiltedCardでプロフィール画像を表示 */}
+            <TiltedCard
+              imageSrc="/images/profile.png"
+              altText="Profile Picture"
+              captionText="Code & Design"
+              containerHeight="300px"
+              containerWidth="300px"
+              imageHeight="300px"
+              imageWidth="300px"
+              rotateAmplitude={12}
+              scaleOnHover={1.1}
+              showMobileWarning={false}
+              showTooltip={true}
+              displayOverlayContent={true}
+              overlayContent={
+                <div className="bg-black/50 p-4 rounded-lg text-white">
+                  <p className="font-bold">My Profile</p>
+                </div>
+              }
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section className="space-y-8 pb-12">
+        <div className="space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight text-center md:text-left border-b pb-2">
+            Skills
+          </h2>
+          <p className="text-sm text-muted-foreground text-center md:text-left">
+            使える技術スタック（できるとは言ってない）
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <SkillCard
+            title="Frontend Frameworks"
+            skills={["React", "Next.js", "Vue", "Nuxt.js", "Tailwind CSS"]}
+          />
+          <SkillCard
+            title="Languages"
+            skills={["TypeScript", "Python", "VBA", "Shell/Batch"]}
+          />
+          <SkillCard title="Backend & DB" skills={["Node.js", "SQL"]} />
+          <SkillCard
+            title="Cloud & Infra"
+            skills={[
+              "AWS (Lambda, Sagemaker, etc.)",
+              "Docker",
+              "Linux",
+              "WSL2",
+              "サーバー構築(物理)",
+            ]}
+          />
+          <SkillCard title="AI & Data" skills={["Huggingface", "Sagemaker"]} />
+          <SkillCard
+            title="Tools & Editors"
+            skills={["Git", "Vim", "Neovim"]}
+          />
         </div>
-      </main>
+      </section>
+
+      {/* Career Section */}
+      <section className="space-y-8 pb-12">
+        <h2 className="text-3xl font-bold tracking-tight text-center md:text-left border-b pb-2">
+          Career
+        </h2>
+        <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
+          {/* Item 1 */}
+          <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+              <div className="w-2 h-2 rounded-full bg-primary" />
+            </div>
+            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border bg-card shadow-sm">
+              <div className="flex items-center justify-between space-x-2 mb-1">
+                <div className="font-bold text-foreground">
+                  東京都立産業技術高等専門学校 卒業
+                </div>
+                <time className="font-mono text-xs text-muted-foreground whitespace-nowrap">
+                  2020.03
+                </time>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                情報通信工学コース 卒業
+              </div>
+            </div>
+          </div>
+
+          {/* Item 2 */}
+          <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+              <div className="w-2 h-2 rounded-full bg-primary" />
+            </div>
+            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border bg-card shadow-sm">
+              <div className="flex items-center justify-between space-x-2 mb-1">
+                <div className="font-bold text-foreground">
+                  朝日エティック株式会社 入社
+                </div>
+                <time className="font-mono text-xs text-muted-foreground whitespace-nowrap">
+                  2020.04
+                </time>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                情報システム部にて、Web開発や情シス業務に従事。
+                Excelマクロやバッチファイルによる業務効率化、キッティングなど「ITの便利屋さん」として奔走。
+              </div>
+            </div>
+          </div>
+
+          {/* Item 3 */}
+          <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+              <div className="w-2 h-2 rounded-full bg-primary" />
+            </div>
+            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border bg-card shadow-sm">
+              <div className="flex items-center justify-between space-x-2 mb-1">
+                <div className="font-bold text-foreground">
+                  株式会社分析屋 入社
+                </div>
+                <time className="font-mono text-xs text-muted-foreground whitespace-nowrap">
+                  2023.11
+                </time>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                データサイエンティスト見習いとしてSESに従事。株式会社ジールへ常駐。
+                生成AIを活用したWebアプリケーション開発など、モダンな技術に触れ始める。
+              </div>
+            </div>
+          </div>
+
+          {/* Item 4 */}
+          <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+              <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_15px_rgba(var(--primary),0.5)]" />
+            </div>
+            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border-2 border-primary/50 bg-card shadow-lg ring-1 ring-primary/20">
+              <div className="flex items-center justify-between space-x-2 mb-1">
+                <div className="font-bold text-foreground text-lg">
+                  フリーランス独立
+                </div>
+                <time className="font-mono text-xs text-primary font-bold whitespace-nowrap">
+                  2025.04 - Present
+                </time>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                培った技術とAI活用スキルを武器に独立。
+                株式会社ジールと直接契約を締結し、エンジニアとして活動中。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="space-y-8 pb-12">
+        <div className="space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight text-center md:text-left border-b pb-2">
+            Projects
+          </h2>
+          <p className="text-sm text-muted-foreground text-center md:text-left">
+            作ったものや携わったもの
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <ProjectCard
+            title="yomiage"
+            description="Twitch 配信者用コメント読み上げアプリ。配信中のコメントをVOICEVOXを使ってリアルタイムに読み上げます。"
+            demoUrl="https://yomiage.vercel.app/"
+            repoUrl="https://github.com/smdhnz/yomiage"
+          />
+          <ProjectCard
+            title="video-viewer"
+            description="ブラウザで動作するローカルビデオビュアー。手元の動画ファイルをサクサク確認できます。"
+            demoUrl="https://video-viewer-smdhnz.vercel.app/"
+            repoUrl="https://github.com/smdhnz/video-viewer"
+          />
+          <ProjectCard
+            title="STORYAI"
+            description="AIを活用したストーリー生成・共有プラットフォーム（詳細執筆中）。"
+            demoUrl="https://storyai.app/"
+          />
+        </div>
+      </section>
+    </div>
+  );
+}
+
+import SpotlightCard from "@/components/SpotlightCard";
+import { ExternalLink } from "lucide-react";
+
+function ProjectCard({
+  title,
+  description,
+  demoUrl,
+  repoUrl,
+}: {
+  title: string;
+  description: string;
+  demoUrl?: string;
+  repoUrl?: string;
+}) {
+  return (
+    <SpotlightCard
+      className="h-full p-6 flex flex-col gap-4"
+      spotlightColor="rgba(0, 229, 255, 0.1)"
+    >
+      <div className="flex justify-between items-start">
+        <h3 className="text-xl font-bold">{title}</h3>
+        <div className="flex gap-2">
+          {repoUrl && (
+            <Link
+              href={repoUrl}
+              target="_blank"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <Github className="h-5 w-5" />
+            </Link>
+          )}
+          {demoUrl && (
+            <Link
+              href={demoUrl}
+              target="_blank"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <ExternalLink className="h-5 w-5" />
+            </Link>
+          )}
+        </div>
+      </div>
+      <p className="text-muted-foreground text-sm flex-1">{description}</p>
+    </SpotlightCard>
+  );
+}
+
+function SkillCard({ title, skills }: { title: string; skills: string[] }) {
+  return (
+    <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow">
+      <h3 className="text-xl font-semibold mb-4">{title}</h3>
+      <div className="flex flex-wrap gap-2">
+        {skills.map((skill) => (
+          <Badge key={skill} variant="secondary" className="text-md py-1 px-3">
+            {skill}
+          </Badge>
+        ))}
+      </div>
     </div>
   );
 }
