@@ -252,7 +252,7 @@ export default function Home() {
           />
           <ProjectCard
             title="STORYAI"
-            description="AIを活用したストーリー生成・共有プラットフォーム（詳細執筆中）。"
+            description="生成AIと融合したAI感情分析SaaS"
             demoUrl="https://storyai.app/"
           />
         </div>
