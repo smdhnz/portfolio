@@ -76,21 +76,21 @@ export default function Home() {
           <div className="flex justify-center">
             {/* TiltedCardでプロフィール画像を表示 */}
             <TiltedCard
-              imageSrc="/images/profile.png"
+              imageSrc="/profile-image.jpg"
               altText="Profile Picture"
-              captionText="Code & Design"
+              captionText="Fumiya Kato"
               containerHeight="300px"
               containerWidth="300px"
               imageHeight="300px"
               imageWidth="300px"
-              rotateAmplitude={12}
-              scaleOnHover={1.1}
+              rotateAmplitude={30}
+              scaleOnHover={1}
               showMobileWarning={false}
-              showTooltip={true}
-              displayOverlayContent={true}
+              showTooltip={false}
+              displayOverlayContent
               overlayContent={
-                <div className="bg-black/50 p-4 rounded-lg text-white">
-                  <p className="font-bold">My Profile</p>
+                <div className="bg-black/50 px-4 py-2 mt-4 ml-4 rounded-lg text-white">
+                  <p className="font-bold">Fumiya Kato</p>
                 </div>
               }
             />
