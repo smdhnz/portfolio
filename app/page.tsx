@@ -58,6 +58,11 @@ export default function Home() {
               <dt className="font-semibold text-foreground">Name</dt>
               <dd className="text-muted-foreground">Fumiya Kato</dd>
 
+              <dt className="font-semibold text-foreground">Age</dt>
+              <dd className="text-muted-foreground">
+                {new Date().getFullYear() - 1999 - (new Date() < new Date(new Date().getFullYear(), 11, 8) ? 1 : 0)}
+              </dd>
+
               <dt className="font-semibold text-foreground">Job</dt>
               <dd className="text-muted-foreground">フリーランスエンジニア</dd>
 
@@ -65,11 +70,7 @@ export default function Home() {
                 Likes
               </dt>
               <dd className="text-muted-foreground">
-                Overwatch2, レザークラフト, 自作PC, ガジェット,{" "}
-                <span className="line-through decoration-destructive decoration-2">
-                  筋トレ
-                </span>
-                （嘘）
+                Overwatch2, レザークラフト, 自作PC, ガジェット
               </dd>
             </dl>
           </div>
