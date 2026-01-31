@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteDock } from "@/components/site-dock";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,6 +79,7 @@ export default function RootLayout({
   return (
     <html lang="ja" suppressHydrationWarning>
       <Analytics />
+      <SpeedInsights />
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSansJP.variable} antialiased font-sans relative min-h-screen flex flex-col bg-background`}
       >
