@@ -75,6 +75,26 @@ export default async function BlogPostPage({
 
   return (
     <article className="container px-4 md:px-8 py-12 max-w-3xl mx-auto space-y-8 pb-32">
+      {/* 構造化データ (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.frontmatter.title,
+            description: post.frontmatter.description,
+            image: post.frontmatter.thumbnail
+              ? `${siteConfig.url}${post.frontmatter.thumbnail}`
+              : `${siteConfig.url}/images/profile.png`,
+            datePublished: post.frontmatter.date,
+            author: {
+              "@type": "Person",
+              name: "Fumiya Kato",
+            },
+          }),
+        }}
+      />
       {/* Back Button */}
       <div>
         <Button
