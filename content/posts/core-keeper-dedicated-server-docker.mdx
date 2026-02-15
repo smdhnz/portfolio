@@ -116,14 +116,32 @@ MODS=""
 
 1. SteamでCore Keeperを起動し、メインメニューなどで `Ctrl + Alt + B` を押す。
 2. デスクトップに `CoreKeeperSaves_*.zip` というバックアップファイルが生成される。
-3. この中身を、サーバー側の `corekeeper-server/server-data` フォルダにコピーする。
+3. 生成されたzipファイルを解凍する。
+4. 解凍したフォルダの中身（`worlds`, `maps` などが含まれる階層）を、サーバー側の `corekeeper-server/server-data` フォルダにそのままコピーする。
 
-PowerShellなどを使って `scp` で送るのが簡単です。
+### scpコマンドでの転送例（Windows PowerShell）
+
+解凍したフォルダがデスクトップにある場合、PowerShellで以下のように実行するのが簡単です。
+（※ `ubuntu` はサーバーのユーザー名、`192.168.1.100` はサーバーのIPアドレスに読み替えてください）
 
 ```powershell
-# 例：ローカルのデータをサーバーへ転送
-scp -r ./path/to/extracted/data user@server-ip:~/corekeeper-server/server-data
+# サーバー側のディレクトリを準備
+# 例： ssh ubuntu@192.168.1.100 ...
+ssh ユーザー名@サーバーのIPアドレス "mkdir -p ~/corekeeper-server/server-data"
+
+# 解凍した中身をフォルダごとすべてサーバーへ転送
+# 例： scp -r $HOME\Desktop\CoreKeeperSaves_...\* ubuntu@192.168.1.100:~/corekeeper-server/server-data/
+scp -r $HOME\Desktop\CoreKeeperSaves_...\* ユーザー名@サーバーのIPアドレス:~/corekeeper-server/server-data/
 ```
+
+### 重要な設定：WORLD_INDEX
+
+バックアップデータをそのままコピーした場合、**どのワールドをサーバーで起動するか**を `core.env` の `WORLD_INDEX` で正しく指定する必要があります。
+
+- コピーした `worlds` フォルダ内にある `0.world` を使いたい場合 → `WORLD_INDEX=0`
+- `1.world` を使いたい場合 → `WORLD_INDEX=1`
+
+普段遊んでいるワールドが複数ある場合は、この番号が一致していないと新しいワールドが生成されてしまうので注意してください。
 
 ## 5. docker-compose.ymlの修正
 
