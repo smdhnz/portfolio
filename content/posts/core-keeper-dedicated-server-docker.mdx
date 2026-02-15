@@ -1,0 +1,165 @@
+---
+title: "Core Keeperのサーバーを自宅サーバー(Docker)で簡単に建てる方法"
+date: "2026-02-15"
+description: "情報が少なくて苦労したCore Keeperの専用サーバー構築。Dockerを使えばUbuntu Serverで驚くほど簡単に、しかもポート開放なしで建てることができたので、その手順をまとめました。"
+categories: ["Tech"]
+thumbnail: "/images/core-keeper-server.png"
+---
+
+# Core Keeperのサーバーを自宅サーバー(Docker)で簡単に建てる方法
+
+Core Keeper、面白いですよね。友達とマルチプレイをしたいけど、ホストがゲームを落とすと他の人も遊べなくなるのが難点。
+
+そこで専用サーバー（Dedicated Server）を建てようと思ったのですが、ググってもAIに聞いてもなかなか正しい情報に辿り着けず、結構苦労しました。
+
+結果として、自宅の **Ubuntu Server** と **Docker** を使うことで驚くほど簡単に構築できたので、その備忘録を残しておきます。
+
+## 1. Dockerのインストール
+
+まずはベースとなるDockerをインストールします。Ubuntu Serverであれば、以下のコマンドを実行するだけでOKです。
+
+```bash
+# Dockerのインストール
+curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh && rm get-docker.sh
+
+# 現在のユーザーをdockerグループに追加（sudoなしで実行できるようにする）
+sudo gpasswd -a $USER docker
+```
+
+実行後、一度ログアウトして再ログインするか、`newgrp docker` を実行して設定を反映させてください。
+
+## 2. サーバーファイルの準備
+
+GitHubで公開されている便利なリポジトリを利用します。
+
+```bash
+# リポジトリをクローン
+git clone https://github.com/escapingnetwork/core-keeper-dedicated.git
+
+# サンプル設定をディレクトリごとコピー
+mv core-keeper-dedicated/docker-compose-example corekeeper-server
+
+# 不要になったリポジトリを削除
+rm -rf core-keeper-dedicated
+
+# 作業ディレクトリへ移動
+cd corekeeper-server
+```
+
+## 3. 環境設定（core.env）の作成
+
+環境変数を設定するためのファイルを作成します。
+
+```bash
+cp .env core.env
+```
+
+`core.env` を編集します。特に重要なのは `DISCORD_WEBHOOK_URL` です。これを設定しておくと、サーバー起動時に **Game ID** がDiscordに通知されるので非常に便利です。
+
+以下に設定例を載せておきます（DiscordのURLは自分のものに置き換えてください）。
+
+```text:core.env
+PUID=1000
+PGID=1000
+ARM64_DEVICE=generic
+USE_DEPOT_DOWNLOADER=false
+WORLD_INDEX=0
+WORLD_NAME="Core Keeper Server"
+WORLD_SEED=""
+WORLD_MODE=0
+GAME_ID=""
+MAX_PLAYERS=2
+SEASON=""
+SERVER_IP=""
+# Port and Password are only needed if using direct connect mode
+#SERVER_PORT="27015"
+#PASSWORD=""
+
+# Discord連携の設定（おすすめ）
+DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
+
+# プレイヤー参加通知
+DISCORD_PLAYER_JOIN_ENABLED=true
+DISCORD_PLAYER_JOIN_MESSAGE="${char_name} (${steamid}) has joined the server."
+DISCORD_PLAYER_JOIN_TITLE="Player Joined"
+DISCORD_PLAYER_JOIN_COLOR="47456"
+
+# プレイヤー離脱通知
+DISCORD_PLAYER_LEAVE_ENABLED=true
+DISCORD_PLAYER_LEAVE_MESSAGE="${char_name} (${steamid}) has disconnected. Reason: ${reason}."
+DISCORD_PLAYER_LEAVE_TITLE="Player Left"
+DISCORD_PLAYER_LEAVE_COLOR="11477760"
+
+# サーバー起動通知（ここにGameIDが表示される）
+DISCORD_SERVER_START_ENABLED=true
+DISCORD_SERVER_START_MESSAGE="**World:** ${world_name}
+**GameID:** ${gameid}"
+DISCORD_SERVER_START_TITLE="Server Started"
+DISCORD_SERVER_START_COLOR="2013440"
+
+# サーバー停止通知
+DISCORD_SERVER_STOP_ENABLED=true
+DISCORD_SERVER_STOP_MESSAGE=""
+DISCORD_SERVER_STOP_TITLE="Server Stopped"
+DISCORD_SERVER_STOP_COLOR="12779520"
+
+# Mod設定
+MODS_ENABLED=false
+MODIO_API_KEY=""
+MODIO_API_URL=""
+MODS=""
+```
+
+## 4. ワールドデータの移行
+
+普段プレイしているセーブデータをサーバーで使いたい場合は、以下の手順で移行できます。
+
+1. SteamでCore Keeperを起動し、メインメニューなどで `Ctrl + Alt + B` を押す。
+2. デスクトップに `CoreKeeperSaves_*.zip` というバックアップファイルが生成される。
+3. この中身を、サーバー側の `corekeeper-server/server-data` フォルダにコピーする。
+
+PowerShellなどを使って `scp` で送るのが簡単です。
+
+```powershell
+# 例：ローカルのデータをサーバーへ転送
+scp -r ./path/to/extracted/data user@server-ip:~/corekeeper-server/server-data
+```
+
+## 5. docker-compose.ymlの修正
+
+デフォルトの `docker-compose.yml` だとパスが絶対パスになっていることがあるので、カレントディレクトリを参照するように修正します。
+
+```yaml
+# 修正前
+# volumes:
+#   - /host/path/to/server-files:/home/steam/core-keeper-dedicated
+#   - /host/path/to/server-data:/home/steam/core-keeper-data
+
+# 修正後
+volumes:
+  - ./server-files:/home/steam/core-keeper-dedicated
+  - ./server-data:/home/steam/core-keeper-data
+```
+
+## 6. サーバー起動！
+
+準備が整ったら、コンテナを立ち上げます。
+
+```bash
+docker compose up -d
+```
+
+しばらく待つとサーバーが起動します。
+
+### Game IDの確認方法
+
+- **Discord連携を設定している場合**: 指定したチャンネルにGame IDが飛んできます。
+- **設定していない場合**: サーバー内の `server-files/GameID.txt` を確認してください。
+
+## 7. ゲームへの参加
+
+Core Keeperを起動し、**「ゲームに参加」** から取得した **Game ID** を入力するだけです！
+
+SteamのP2P通信を利用しているため、面倒な **ポート開放などの設定は一切不要** でした。自宅サーバーのUbuntuでこれを動かすだけで、いつでも友達と地下探索が楽しめます。
+
+ぜひ試してみてください！
