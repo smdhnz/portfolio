@@ -5,6 +5,15 @@ import SpotlightCard from "@/components/SpotlightCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+  CardDescription,
+} from "@/components/ui/card";
+
 export default async function BlogPage({
   searchParams,
 }: {
@@ -66,7 +75,7 @@ export default async function BlogPage({
             >
               <div className="flex flex-col h-full space-y-4">
                 {post.frontmatter.thumbnail && (
-                  <div className="aspect-video w-full overflow-hidden rounded-md bg-muted relative">
+                  <div className="aspect-video w-full overflow-hidden rounded-xl bg-muted relative">
                     <Image
                       src={post.frontmatter.thumbnail}
                       alt={post.frontmatter.title}
@@ -76,23 +85,25 @@ export default async function BlogPage({
                     />
                   </div>
                 )}
-                <div className="space-y-2 flex-1">
-                  <div className="flex gap-2 flex-wrap">
-                    {post.frontmatter.categories.map((cat) => (
-                      <Badge key={cat} variant="secondary" className="text-xs">
-                        {cat}
-                      </Badge>
-                    ))}
+                <div className="space-y-4 flex-1 flex flex-col">
+                  <div className="space-y-2 flex-1">
+                    <div className="flex gap-2 flex-wrap">
+                      {post.frontmatter.categories.map((cat) => (
+                        <Badge key={cat} variant="secondary" className="text-xs">
+                          {cat}
+                        </Badge>
+                      ))}
+                    </div>
+                    <h2 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors">
+                      {post.frontmatter.title}
+                    </h2>
+                    <p className="text-sm text-muted-foreground line-clamp-3">
+                      {post.frontmatter.description}
+                    </p>
                   </div>
-                  <h2 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors">
-                    {post.frontmatter.title}
-                  </h2>
-                  <p className="text-sm text-muted-foreground line-clamp-3">
-                    {post.frontmatter.description}
-                  </p>
-                </div>
-                <div className="text-xs text-muted-foreground pt-4 border-t mt-auto">
-                  {post.frontmatter.date}
+                  <div className="text-xs text-muted-foreground pt-4 border-t">
+                    {post.frontmatter.date}
+                  </div>
                 </div>
               </div>
             </SpotlightCard>

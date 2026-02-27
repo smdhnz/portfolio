@@ -7,6 +7,13 @@ import Link from "next/link";
 import { ArrowRight, Github } from "lucide-react";
 import SpotlightCard from "@/components/SpotlightCard";
 import { ExternalLink } from "lucide-react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "@/components/ui/card";
 
 export default function Home() {
   return (
@@ -154,19 +161,21 @@ export default function Home() {
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
               <div className="w-2 h-2 rounded-full bg-primary" />
             </div>
-            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border bg-card shadow-sm">
-              <div className="flex items-center justify-between space-x-2 mb-1">
-                <div className="font-bold text-foreground">
+            <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] py-4">
+              <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-base font-bold">
                   東京都立産業技術高等専門学校 卒業
-                </div>
+                </CardTitle>
                 <time className="font-mono text-xs text-muted-foreground whitespace-nowrap">
                   2020.03
                 </time>
-              </div>
-              <div className="text-sm text-muted-foreground">
-                情報通信工学コース 卒業
-              </div>
-            </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm">
+                  情報通信工学コース 卒業
+                </CardDescription>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Item 2 */}
@@ -174,20 +183,22 @@ export default function Home() {
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
               <div className="w-2 h-2 rounded-full bg-primary" />
             </div>
-            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border bg-card shadow-sm">
-              <div className="flex items-center justify-between space-x-2 mb-1">
-                <div className="font-bold text-foreground">
+            <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] py-4">
+              <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-base font-bold">
                   朝日エティック株式会社 入社
-                </div>
+                </CardTitle>
                 <time className="font-mono text-xs text-muted-foreground whitespace-nowrap">
                   2020.04
                 </time>
-              </div>
-              <div className="text-sm text-muted-foreground">
-                情報システム部にて、Web開発や情シス業務に従事。
-                Excelマクロやバッチファイルによる業務効率化、キッティングなど「ITの便利屋さん」として奔走。
-              </div>
-            </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm">
+                  情報システム部にて、Web開発や情シス業務に従事。
+                  Excelマクロやバッチファイルによる業務効率化、キッティングなど「ITの便利屋さん」として奔走。
+                </CardDescription>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Item 3 */}
@@ -195,20 +206,22 @@ export default function Home() {
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
               <div className="w-2 h-2 rounded-full bg-primary" />
             </div>
-            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border bg-card shadow-sm">
-              <div className="flex items-center justify-between space-x-2 mb-1">
-                <div className="font-bold text-foreground">
+            <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] py-4">
+              <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-base font-bold">
                   株式会社分析屋 入社
-                </div>
+                </CardTitle>
                 <time className="font-mono text-xs text-muted-foreground whitespace-nowrap">
                   2023.11
                 </time>
-              </div>
-              <div className="text-sm text-muted-foreground">
-                データサイエンティスト見習いとしてSESに従事。株式会社ジールへ常駐。
-                生成AIを活用したWebアプリケーション開発など、モダンな技術に触れ始める。
-              </div>
-            </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm">
+                  データサイエンティスト見習いとしてSESに従事。株式会社ジールへ常駐。
+                  生成AIを活用したWebアプリケーション開発など、モダンな技術に触れ始める。
+                </CardDescription>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Item 4 */}
@@ -216,20 +229,22 @@ export default function Home() {
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
               <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_15px_rgba(var(--primary),0.5)]" />
             </div>
-            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border-2 border-primary/50 bg-card shadow-lg ring-1 ring-primary/20">
-              <div className="flex items-center justify-between space-x-2 mb-1">
-                <div className="font-bold text-foreground text-lg">
+            <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] py-4 border-2 border-primary/50 shadow-lg ring-1 ring-primary/20">
+              <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-lg font-bold">
                   フリーランス独立
-                </div>
+                </CardTitle>
                 <time className="font-mono text-xs text-primary font-bold whitespace-nowrap">
                   2025.04 - Present
                 </time>
-              </div>
-              <div className="text-sm text-muted-foreground">
-                培った技術とAI活用スキルを武器に独立。
-                株式会社ジールと直接契約を締結し、エンジニアとして活動中。
-              </div>
-            </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm">
+                  培った技術とAI活用スキルを武器に独立。
+                  株式会社ジールと直接契約を締結し、エンジニアとして活動中。
+                </CardDescription>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -314,15 +329,17 @@ function ProjectCard({
 
 function SkillCard({ title, skills }: { title: string; skills: string[] }) {
   return (
-    <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow">
-      <h3 className="text-xl font-semibold mb-4">{title}</h3>
-      <div className="flex flex-wrap gap-2">
+    <Card className="hover:shadow-md transition-shadow">
+      <CardHeader>
+        <CardTitle className="text-xl">{title}</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-wrap gap-2">
         {skills.map((skill) => (
           <Badge key={skill} variant="secondary" className="text-md py-1 px-3">
             {skill}
           </Badge>
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }

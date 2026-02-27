@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Youtube } from "@/components/mdx/Youtube";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import rehypeHighlight from "rehype-highlight";
@@ -116,11 +117,7 @@ export default async function BlogPostPage({
       <div className="space-y-4">
         <div className="flex gap-2 flex-wrap">
           {post.frontmatter.categories.map((cat) => (
-            <Badge
-              key={cat}
-              variant="outline"
-              className="border-primary/20 text-primary"
-            >
+            <Badge key={cat} variant="secondary">
               {cat}
             </Badge>
           ))}
@@ -132,6 +129,8 @@ export default async function BlogPostPage({
           <time dateTime={post.frontmatter.date}>{post.frontmatter.date}</time>
         </div>
       </div>
+
+      <Separator />
 
       {/* Thumbnail */}
       {post.frontmatter.thumbnail && (

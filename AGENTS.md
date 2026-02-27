@@ -9,6 +9,9 @@
 - **ランタイム**: Bun.js
 - **UIライブラリ**:
   - [Shadcn/UI](https://ui.shadcn.com/) (MCPサーバー有)
+    - **原則として提供されているプロパティのみを使用してください。**
+    - `className` による独自のスタイリングは可能な限り控えてください。
+    - 特に `Card` など、あらかじめ余白（padding）やデザインが定義されているコンポーネントにおいて、`className` でこれらを上書きすることは避け、コンポーネントの持つセマンティクスを尊重してください。
   - [React Bits](https://react-bits.vercel.app/) (MCPサーバー有)
 - **スタイリング**: Tailwind CSS
 - **画像生成**: Nano Banana
