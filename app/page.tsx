@@ -281,7 +281,6 @@ export default function Home() {
             title="Board Verse"
             description="ユーザー登録不要でURLを共有するだけで即座に対戦可能なオンラインボードゲームプラットフォーム。"
             demoUrl="https://board-verse.vercel.app/"
-            repoUrl="https://github.com/smdhnz/board-verse"
           />
         </div>
       </section>
