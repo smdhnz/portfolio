@@ -277,6 +277,12 @@ export default function Home() {
             description="生成AIと融合したAI感情分析SaaS"
             demoUrl="https://storyai.app/"
           />
+          <ProjectCard
+            title="Board Verse"
+            description="ユーザー登録不要でURLを共有するだけで即座に対戦可能なオンラインボードゲームプラットフォーム。"
+            demoUrl="https://board-verse.vercel.app/"
+            repoUrl="https://github.com/smdhnz/board-verse"
+          />
         </div>
       </section>
     </div>
