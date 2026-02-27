@@ -7,12 +7,8 @@ import Link from "next/link";
 import { ArrowRight, Github } from "lucide-react";
 import SpotlightCard from "@/components/SpotlightCard";
 import { ExternalLink } from "lucide-react";
-import { getAllPosts } from "@/lib/posts";
-import Image from "next/image";
 
 export default function Home() {
-  const latestPosts = getAllPosts().slice(0, 3);
-
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-24 space-y-24">
       {/* Hero Section */}
@@ -38,55 +34,6 @@ export default function Home() {
               <Github className="mr-2 h-4 w-4" /> GitHub
             </Link>
           </Button>
-        </div>
-      </section>
-
-      {/* Latest Blog Posts Section */}
-      <section className="space-y-8">
-        <div className="flex items-center justify-between border-b pb-2">
-          <h2 className="text-3xl font-bold tracking-tight">Latest Posts</h2>
-          <Button variant="ghost" asChild>
-            <Link href="/blog">
-              View all <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {latestPosts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-              <SpotlightCard className="h-full overflow-hidden flex flex-col">
-                <div className="aspect-video relative overflow-hidden">
-                  <Image
-                    src={post.frontmatter.thumbnail || "/images/profile.png"}
-                    alt={post.frontmatter.title}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4 space-y-2 flex-1 flex flex-col">
-                  <div className="flex gap-2">
-                    {post.frontmatter.categories.slice(0, 2).map((cat) => (
-                      <span
-                        key={cat}
-                        className="text-[10px] uppercase tracking-wider text-primary font-bold"
-                      >
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="font-bold leading-snug group-hover:text-primary transition-colors line-clamp-2">
-                    {post.frontmatter.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground line-clamp-2 mt-auto">
-                    {post.frontmatter.description}
-                  </p>
-                  <time className="text-[10px] text-muted-foreground pt-2">
-                    {post.frontmatter.date}
-                  </time>
-                </div>
-              </SpotlightCard>
-            </Link>
-          ))}
         </div>
       </section>
 
