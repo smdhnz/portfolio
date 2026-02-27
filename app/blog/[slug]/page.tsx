@@ -1,6 +1,7 @@
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
+import React from "react";
 import { Youtube } from "@/components/mdx/Youtube";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,8 @@ import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { Metadata } from "next";
 import { siteConfig } from "@/lib/constants";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { CopyButton } from "@/components/mdx/CopyButton";
 
 export async function generateStaticParams() {
   const slugs = getPostSlugs();
@@ -65,8 +68,56 @@ export async function generateMetadata({
   };
 }
 
+/**
+ * Reactのノードから再帰的にプレーンテキストを抽出する
+ */
+function extractText(node: React.ReactNode): string {
+  if (!node) return "";
+  if (typeof node === "string" || typeof node === "number") {
+    return String(node);
+  }
+  if (Array.isArray(node)) {
+    return node.map(extractText).join("");
+  }
+  if (React.isValidElement<{ children?: React.ReactNode }>(node)) {
+    return extractText(node.props.children);
+  }
+  return "";
+}
+
 const components = {
   Youtube,
+  /**
+   * カスタムのpreコンポーネント
+   * ScrollAreaを使用して横スクロールを実装し、CopyButtonを追加する
+   */
+  pre: ({ children, ...props }: React.HTMLAttributes<HTMLPreElement>) => {
+    // codeタグを探し、その中身からテキストを抽出する
+    const codeElement = React.Children.toArray(children).find(
+      (child) => React.isValidElement(child) && child.type === "code",
+    );
+    const rawText = codeElement ? extractText(codeElement) : "";
+
+    return (
+      <div className="group relative my-6">
+        <ScrollArea className="w-full rounded-md border border-border/50 bg-[#0d1117]">
+          <div className="p-6 md:p-8">
+            <pre
+              {...props}
+              className="p-0 m-0 overflow-visible bg-transparent border-none"
+            >
+              {children}
+            </pre>
+          </div>
+          <ScrollBar orientation="horizontal" className="bg-muted/10" />
+        </ScrollArea>
+        <CopyButton
+          text={rawText}
+          className="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-opacity"
+        />
+      </div>
+    );
+  },
 };
 
 export default async function BlogPostPage({
