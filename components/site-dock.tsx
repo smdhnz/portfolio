@@ -9,27 +9,27 @@ export function SiteDock() {
 
   const items = [
     {
-      icon: <Home className="h-5 w-5 text-white" />,
+      icon: <Home className="h-5 w-5 text-foreground" />,
       label: "Home",
       onClick: () => router.push("/"),
     },
     {
-      icon: <PenTool className="h-5 w-5 text-white" />,
+      icon: <PenTool className="h-5 w-5 text-foreground" />,
       label: "Blog",
       onClick: () => router.push("/blog"),
     },
     {
-      icon: <Github className="h-5 w-5 text-white" />,
+      icon: <Github className="h-5 w-5 text-foreground" />,
       label: "GitHub",
       onClick: () => window.open("https://github.com/smdhnz", "_blank"),
     },
     {
-      icon: <Instagram className="h-5 w-5 text-white" />,
+      icon: <Instagram className="h-5 w-5 text-foreground" />,
       label: "Instagram",
       onClick: () => window.open("https://www.instagram.com/ktfmy_/", "_blank"),
     },
     {
-      icon: <Youtube className="h-5 w-5 text-white" />,
+      icon: <Youtube className="h-5 w-5 text-foreground" />,
       label: "YouTube",
       onClick: () =>
         window.open("https://www.youtube.com/@smdhnz-w6f/featured", "_blank"),
