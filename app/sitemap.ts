@@ -2,6 +2,8 @@ import { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/posts";
 import { siteConfig } from "@/lib/constants";
 
+export const revalidate = 3600; // 1時間に1回再生成（または 0 で常に動的）
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
   const baseUrl = siteConfig.url;

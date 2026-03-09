@@ -4,9 +4,11 @@ export const siteConfig = {
     "エンジニアとしてのポートフォリオサイトです。技術とか、日常とか。気が向いたときに、なんとなく更新します。",
   url:
     process.env.NEXT_PUBLIC_APP_URL ||
-    (process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "https://example.com"),
+    (process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "https://example.com"),
   author: {
     name: "Fumiya Kato",
     url: "https://github.com/smdhnz",
