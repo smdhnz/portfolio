@@ -85,7 +85,57 @@ function extractText(node: React.ReactNode): string {
   return "";
 }
 
+/**
+ * MDX内で使用される画像コンポーネント
+ * 縦長の画像が大きくなりすぎるのを防ぐため、max-height で縦のサイズを制限する
+ */
+function MdxImage(
+  props: React.ImgHTMLAttributes<HTMLImageElement> & {
+    width?: number | string;
+    height?: number | string;
+    alt?: string;
+  },
+) {
+  const { src, width, height, alt, className: classNameProp, ...rest } = props;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      className={`${classNameProp || ""} max-h-[48vh] w-auto h-auto mx-auto block rounded-lg`.trim()}
+      {...rest}
+    />
+  );
+}
+
+/**
+ * MDX内で使用される動画コンポーネント
+ * 縦長の動画が大きくなりすぎるのを防ぐため、max-height で縦のサイズを制限する
+ */
+function Video(
+  props: React.VideoHTMLAttributes<HTMLVideoElement> & {
+    src?: string;
+    width?: string | number;
+    height?: string | number;
+  },
+) {
+  const { src, className: classNameProp, width, height, ...rest } = props;
+  return (
+    <video
+      src={src}
+      width={width}
+      height={height}
+      className={`${classNameProp || ""} max-h-[48vh] w-auto h-auto mx-auto rounded-lg block object-contain`.trim()}
+      {...rest}
+    />
+  );
+}
+
 const components = {
+  img: MdxImage,
+  video: Video,
+  Video,
   Youtube,
   /**
    * カスタムのpreコンポーネント
@@ -120,6 +170,18 @@ const components = {
   },
 };
 
+/**
+ * 記事本文のMDXソース内にthumbnailと同じ画像が含まれているかチェックする
+ */
+function isThumbnailInContent(
+  content: string,
+  thumbnail: string | undefined,
+): boolean {
+  if (!thumbnail) return false;
+  const path = thumbnail.replace(/^\//, "");
+  return content.includes(path) || content.includes(thumbnail);
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -127,6 +189,10 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
+  const shouldHideThumbnail = isThumbnailInContent(
+    post.content,
+    post.frontmatter.thumbnail,
+  );
 
   return (
     <article className="container px-4 md:px-8 py-12 max-w-3xl mx-auto space-y-8 pb-32">
@@ -184,7 +250,7 @@ export default async function BlogPostPage({
       <Separator />
 
       {/* Thumbnail */}
-      {post.frontmatter.thumbnail && (
+      {post.frontmatter.thumbnail && !shouldHideThumbnail && (
         <div className="aspect-video w-full overflow-hidden rounded-xl bg-muted border border-border/50 shadow-sm relative">
           <Image
             src={post.frontmatter.thumbnail}
