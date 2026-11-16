@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0d0c">
+<meta name="description" content="Fumiya Kato（加藤文也）のポートフォリオ。フリーランスエンジニアのプロフィール、スキル、経歴、制作物。">
+<title>Fumiya Kato | Portfolio</title>
+<style>
+:root{--bg:#0b0d0c;--text:#d9dedb;--muted:#929d96;--line:#2b332e;--green:#a5e37e;--cyan:#7ed9df;--magenta:#dba3ec;--yellow:#ecd184;--blue:#91b8f5;--orange:#efb28b;font-family:"SFMono-Regular",Consolas,"Liberation Mono","Noto Sans Mono",monospace;color:var(--text);background:var(--bg);font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;font-size:15px;line-height:1.85}::selection{background:var(--green);color:var(--bg)}main{width:min(100% - 96px,1000px);margin:0 auto;padding:64px 0 48px}a{color:var(--cyan);text-decoration:underline;text-decoration-color:#476469;text-underline-offset:5px;overflow-wrap:anywhere;transition:color .15s}a:hover{color:var(--green);text-decoration-color:currentColor}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--yellow);outline-offset:5px}button{font:inherit;color:var(--muted);border:1px solid var(--line);background:transparent;cursor:pointer;padding:7px 12px;min-height:44px}button:hover{color:var(--text);border-color:var(--muted)}.boot{display:flex;gap:24px;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;margin-bottom:34px}.boot-text::before{content:'[ OK ] ';color:var(--green)}.banner{margin:0 0 18px;color:var(--green);font-size:clamp(5.3px,1.25vw,12px);line-height:1.3;white-space:pre;font-weight:700;letter-spacing:0}.banner{min-height:18.2em}.banner .ascii-row{display:block}.intro-note{color:var(--muted);font-size:13px;margin:0 0 42px}.command{font-weight:500;font-size:20px;line-height:1.5;margin:0 0 26px;display:flex;align-items:baseline;gap:13px;color:var(--text)}.prompt{color:var(--green)}.section-index{margin-left:auto;font-size:12px;color:var(--muted)}section{padding:34px 0 40px;border-top:1px dashed var(--line)}.output{padding-left:30px}h1{font-size:27px;font-weight:500;letter-spacing:-1px;line-height:1.4;margin:0 0 22px;color:var(--text)}.profile{display:grid;grid-template-columns:85px 1fr;gap:9px 22px;margin:0}.profile dt{color:var(--muted)}.profile dd{margin:0;min-width:0}.age{color:var(--yellow)}.birth{color:var(--muted);font-size:12px;margin-left:12px}.job{color:var(--cyan)}.comments{margin-top:30px;max-width:760px;color:#adb7b0}.comments p{margin:12px 0;position:relative;padding-left:24px}.comments p::before{content:'#';position:absolute;left:0;color:var(--muted)}.note{color:var(--muted);font-size:13px;margin:-10px 0 25px}.skills{display:grid;grid-template-columns:1fr 1fr;gap:26px 50px}.skill h3{font-size:14px;font-weight:500;margin:0 0 8px}.skill h3::before{content:'[ ';opacity:.65}.skill h3::after{content:' ]';opacity:.65}.skill ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:2px 0}.skill-icon{display:inline-block;width:16px;height:16px;object-fit:contain;vertical-align:-3px;margin-right:6px}.skill li:not(:last-child)::after{content:' / ';color:#69766d;white-space:pre}.green{color:var(--green)}.yellow{color:var(--yellow)}.cyan{color:var(--cyan)}.blue{color:var(--blue)}.magenta{color:var(--magenta)}.orange{color:var(--orange)}.career{list-style:none;padding:0;margin:0}.career li{display:grid;grid-template-columns:177px 1fr;gap:20px;padding:0 0 28px}.career li:last-child{padding-bottom:0}.career time{color:var(--yellow);font-size:13px;padding-top:3px}.career h3{font-size:16px;font-weight:500;margin:0 0 7px}.career p{color:#adb7b0;margin:0;max-width:640px}.projects{list-style:none;margin:0;padding:0;counter-reset:works}.project{padding:24px 0;border-bottom:1px solid var(--line);counter-increment:works}.project:first-child{padding-top:0}.project:last-child{border:0;padding-bottom:0}.project h3{font-size:19px;font-weight:500;margin:0 0 8px;color:var(--magenta)}.project h3::before{content:'0' counter(works) '  ';font-size:12px;color:var(--muted)}.project p{margin:0 0 14px;max-width:720px;color:#adb7b0}.project-links{display:grid;gap:4px;font-size:13px}.project-links div{display:grid;grid-template-columns:68px 1fr;gap:10px}.link-label{color:var(--muted)}.session-end{border-top:1px dashed var(--line);padding-top:26px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:24px}.idle{margin:28px 0 0;font-size:20px;color:var(--green)}.cursor{display:inline-block;width:9px;height:18px;background:var(--green);vertical-align:-3px;animation:blink 1.1s step-end infinite;animation-iteration-count:4}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}@keyframes blink{50%{opacity:0}}@keyframes line-in{from{opacity:.15}to{opacity:1}}.animating .typed{animation:line-in .3s both;animation-delay:var(--delay,0ms)}@media(min-width:1400px){main{width:1000px}}@media(max-width:700px){main{width:calc(100% - 40px);padding-top:28px}.boot{gap:12px;font-size:11px;margin-bottom:28px}.banner{font-size:clamp(4.3px,1.35vw,9px)}.intro-note{font-size:12px;margin-bottom:30px}section{padding:26px 0 30px}.output{padding-left:0}.command{font-size:18px;margin-bottom:22px}.profile{grid-template-columns:57px 1fr;gap:10px 15px}.birth{display:block;margin-left:0}.skills{grid-template-columns:1fr;gap:22px}.career li{grid-template-columns:1fr;gap:4px;padding-bottom:28px}.career h3{font-size:16px}.session-end{flex-direction:column;gap:4px}.project-links div{grid-template-columns:48px 1fr;gap:8px}body{font-size:16px}.project-links{font-size:12px}h1{font-size:25px}.comments{margin-top:26px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.cursor{opacity:1}}
+.terminal{margin-top:28px}.terminal-history{font-size:14px;overflow-wrap:anywhere}.terminal-entry{margin:0 0 12px;white-space:pre-wrap;font:inherit}.terminal-echo{color:var(--muted)}.terminal-form{position:relative;display:flex;align-items:center;gap:13px;min-height:44px;color:var(--green);font-size:20px;cursor:text}.terminal-input{flex:1;min-width:0;width:100%;font:inherit;font-size:16px;line-height:1.85;color:var(--text);background:transparent;border:0;border-radius:0;padding:6px 0;caret-color:var(--green)}.terminal-input:focus-visible{outline:0}.terminal-form:focus-within{box-shadow:0 1px var(--muted)}.terminal-form .cursor{position:absolute;left:26px;pointer-events:none;animation-iteration-count:infinite}.terminal-form:focus-within .cursor,.terminal-input:not(:placeholder-shown) ~ .cursor{display:none}.terminal-active *, .terminal-active *::before,.terminal-active *::after{animation-play-state:paused!important}.terminal-active .motion-canvas{visibility:hidden}
+
+
+/* Decorative layers never intercept text selection, links, or touch gestures. */
+body{isolation:isolate}main{position:relative;z-index:1}
+.motion-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
+#ascii-trail{z-index:2}
+section,.session-end{position:relative}
+section::before,.session-end::before{content:'';position:absolute;top:-1px;left:0;width:22%;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.6;animation:wire-flow 7s linear infinite;pointer-events:none}
+section:nth-of-type(2n)::before{animation-delay:-3s}
+.boot-text::before{display:inline-block;animation:status-pulse 3.2s ease-in-out infinite}
+.section-index{animation:status-pulse 4s ease-in-out infinite}
+.cursor{animation-iteration-count:infinite}
+a{transition:color .18s,text-shadow .18s,background-color .18s}
+a:hover,a:focus-visible{text-shadow:0 0 14px #7ed9df88;background-color:#7ed9df0a}
+.project{transition:transform .25s,background-color .25s,box-shadow .25s}
+.project:focus-within{background:#7ed9df08;box-shadow:-3px 0 var(--cyan)}
+.skill li{transition:color .18s,text-shadow .18s,transform .22s;transform-origin:center}
+@media(hover:hover) and (pointer:fine){.project:hover{transform:translateY(-3px);background:#7ed9df08;box-shadow:-3px 0 var(--cyan)}.skill li:hover{color:var(--cyan);text-shadow:0 0 12px #7ed9df88;animation:skill-hop .38s ease-out}}
+.motion-ready section.motion-pending .typed{clip-path:inset(0 100% 0 0)}
+.motion-ready section.motion-pending .output{opacity:0;transform:translateY(12px)}
+.motion-ready section .output{transition:opacity .45s ease,transform .45s ease}
+section.command-running .typed::after{content:'_';color:var(--green)}
+@keyframes wire-flow{from{transform:translateX(0)}to{transform:translateX(350%)}}
+@keyframes status-pulse{0%,100%{opacity:1;text-shadow:0 0 7px #a5e37e33}50%{opacity:.55;text-shadow:none}}
+@keyframes skill-hop{0%,100%{transform:translateY(0)}45%{transform:translateY(-4px)}}
+.terminal-active *, .terminal-active *::before,.terminal-active *::after{animation-play-state:paused!important}
+.terminal-active .motion-canvas{visibility:hidden}
+@media(max-width:700px){section::before{width:25%}@keyframes wire-flow{to{transform:translateX(300%)}}}
+@media(prefers-reduced-motion:reduce){.motion-canvas{display:none}.motion-ready section.motion-pending .typed{clip-path:none}.motion-ready section.motion-pending .output{opacity:1;transform:none}.project:hover,.skill li:hover{transform:none}section::before,.session-end::before{display:none}}
+</style>
+</head>
+<body>
+<main>
+<div class="boot"><span class="boot-text" id="boot-text">portfolio session ready.</span></div>
+<pre class="banner" aria-hidden="true"><span class="ascii-row"><span class="green">=+++****</span><span class="cyan">########</span><span class="blue">########</span><span class="magenta">****++++</span><span class="yellow">=====---</span><span class="green">--------</span><span class="cyan">-------=</span><span class="blue">=======+</span><span class="magenta">++++++++</span><span class="yellow">+++++++=</span></span><span class="ascii-row"><span class="green">+***####</span><span class="cyan">#%%%%%%%</span><span class="blue">%%%%%###</span><span class="magenta">#****+++</span><span class="yellow">+=====--</span><span class="green">--------</span><span class="cyan">----====</span><span class="blue">==++++++</span><span class="magenta">++******</span><span class="yellow">******++</span></span><span class="ascii-row"><span class="green">*####%%%</span><span class="cyan">%%%%@@@%</span><span class="blue">%%%%%%##</span><span class="magenta">##****++</span><span class="yellow">+=====--</span><span class="green">--------</span><span class="cyan">-======+</span><span class="blue">+++++***</span><span class="magenta">******##</span><span class="yellow">##******</span></span><span class="ascii-row"><span class="cyan">###%%%%%</span><span class="blue">@@@@@@@@</span><span class="magenta">@@%%%%%#</span><span class="yellow">##****++</span><span class="green">+======-</span><span class="cyan">-------=</span><span class="blue">=====+++</span><span class="magenta">++*****#</span><span class="yellow">########</span><span class="green">########</span></span><span class="ascii-row"><span class="cyan">##%%%%%@</span><span class="blue">@@@@@@@@</span><span class="magenta">@%%%%%##</span><span class="yellow">#****+++</span><span class="green">======--</span><span class="cyan">-------=</span><span class="blue">====++++</span><span class="magenta">*****###</span><span class="yellow">###%%%%%</span><span class="green">%%%%####</span></span><span class="ascii-row"><span class="cyan">#%%%%%%@</span><span class="blue">@@@@@@@%</span><span class="magenta">%%%%####</span><span class="yellow">***++++=</span><span class="green">===-----</span><span class="cyan">-------=</span><span class="blue">====++++</span><span class="magenta">****####</span><span class="yellow">#%%%%%%%</span><span class="green">%%%%%%##</span></span><span class="ascii-row"><span class="blue">###%%%%%</span><span class="magenta">%%%%%%%%</span><span class="yellow">%#####**</span><span class="green">*++++===</span><span class="cyan">=-------</span><span class="blue">--------</span><span class="magenta">====++++</span><span class="yellow">***#####</span><span class="green">%%%%%%%%</span><span class="cyan">%%%%%###</span></span><span class="ascii-row"><span class="blue">########</span><span class="magenta">%%%#####</span><span class="yellow">##****++</span><span class="green">++====--</span><span class="cyan">---:::::</span><span class="blue">::::----</span><span class="magenta">-====+++</span><span class="yellow">****####</span><span class="green">#%%%%%%%</span><span class="cyan">%%######</span></span><span class="ascii-row"><span class="blue">****####</span><span class="magenta">#####***</span><span class="yellow">***++++=</span><span class="green">===----:</span><span class="cyan">::::::::</span><span class="blue">::::::--</span><span class="magenta">--===+++</span><span class="yellow">+****###</span><span class="green">########</span><span class="cyan">#####***</span></span><span class="ascii-row"><span class="magenta">++******</span><span class="yellow">******++</span><span class="green">+++=====</span><span class="cyan">----::::</span><span class="blue">:.......</span><span class="magenta">..:::::-</span><span class="yellow">---===++</span><span class="green">+*****##</span><span class="cyan">########</span><span class="blue">#*****++</span></span><span class="ascii-row"><span class="magenta">++++++++</span><span class="yellow">+++++++=</span><span class="green">====----</span><span class="cyan">-:::::..</span><span class="blue">........</span><span class="magenta">...:::::</span><span class="yellow">---===++</span><span class="green">++******</span><span class="cyan">*####***</span><span class="blue">***++++=</span></span><span class="ascii-row"><span class="magenta">========</span><span class="yellow">========</span><span class="green">=------:</span><span class="cyan">::::....</span><span class="blue">........</span><span class="magenta">...:::::</span><span class="yellow">---====+</span><span class="green">+++*****</span><span class="cyan">********</span><span class="blue">*++++===</span></span><span class="ascii-row"><span class="yellow">--======</span><span class="green">=====---</span><span class="cyan">-----:::</span><span class="blue">:::.....</span><span class="magenta">........</span><span class="yellow">..:::::-</span><span class="green">---===++</span><span class="cyan">+++*****</span><span class="blue">*******+</span><span class="magenta">+++====-</span></span><span class="ascii-row"><span class="yellow">--------</span><span class="green">--------</span><span class="cyan">-----:::</span><span class="blue">:::::...</span><span class="magenta">........</span><span class="yellow">:::::---</span><span class="green">--====++</span><span class="cyan">+++*****</span><span class="blue">*****+++</span><span class="magenta">++====--</span></span></pre>
+<p class="intro-note"># Fumiya Kato / freelance engineer</p>
+<section aria-labelledby="whoami"><h2 id="whoami" class="command"><span class="prompt" aria-hidden="true">$</span> <span class="typed">whoami</span><span class="section-index" aria-hidden="true">[01]</span></h2><div class="output"><h1>Fumiya Kato<span class="sr-only"> のポートフォリオ</span></h1>
+<dl class="profile"><dt>Name</dt><dd>Fumiya Kato</dd><dt>Age</dt><dd><span class="age" id="age">1999年12月8日生まれ</span><span class="birth" id="birth" hidden>1999.12.08 born</span></dd><dt>Job</dt><dd class="job">フリーランスエンジニア</dd><dt>Likes</dt><dd>Overwatch2 / レザークラフト / 自作PC / ガジェット</dd><dt>GitHub</dt><dd><a href="https://github.com/smdhnz">https://github.com/smdhnz</a></dd></dl>
+</div></section><section aria-labelledby="skills"><h2 id="skills" class="command"><span class="prompt" aria-hidden="true">$</span> <span class="typed">skills</span><span class="section-index" aria-hidden="true">[02]</span></h2><div class="output"><div class="skills"><div class="skill"><h3 class="green">Frontend Frameworks</h3><ul><li><img class="skill-icon" src="https://cdn.simpleicons.org/react" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">React</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/nextdotjs" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Next.js</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/vuedotorg" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Vue</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/nuxt" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Nuxt.js</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/tailwindcss" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Tailwind CSS</li></ul></div><div class="skill"><h3 class="yellow">Languages</h3><ul><li><img class="skill-icon" src="https://cdn.simpleicons.org/typescript" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">TypeScript</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/python" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Python</li><li>VBA</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/gnubash" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Shell/Batch</li></ul></div><div class="skill"><h3 class="cyan">Backend &amp; DB</h3><ul><li><img class="skill-icon" src="https://cdn.simpleicons.org/nodedotjs" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Node.js</li><li>SQL</li></ul></div><div class="skill"><h3 class="blue">Cloud &amp; Infra</h3><ul><li>AWS (Lambda, Sagemaker, etc.)</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/docker" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Docker</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/linux" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Linux</li><li>WSL2</li><li>サーバー構築(物理)</li></ul></div><div class="skill"><h3 class="magenta">AI &amp; Data</h3><ul><li><img class="skill-icon" src="https://cdn.simpleicons.org/huggingface" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Huggingface</li><li>Sagemaker</li></ul></div><div class="skill"><h3 class="orange">Tools &amp; Editors</h3><ul><li><img class="skill-icon" src="https://cdn.simpleicons.org/git" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Git</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/vim" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Vim</li><li><img class="skill-icon" src="https://cdn.simpleicons.org/neovim" width="16" height="16" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'">Neovim</li></ul></div></div></div></section><section aria-labelledby="career"><h2 id="career" class="command"><span class="prompt" aria-hidden="true">$</span> <span class="typed">career</span><span class="section-index" aria-hidden="true">[03]</span></h2><div class="output"><ol class="career"><li><time>2020.03</time><div><h3>東京都立産業技術高等専門学校 卒業</h3><p>情報通信工学コース 卒業</p></div></li><li><time>2020.04</time><div><h3>朝日エティック株式会社 入社</h3><p>情報システム部でWeb開発と情シス業務を担当。Excelマクロやバッチファイルによる業務効率化、PCのキッティングなどを行った。</p></div></li><li><time>2023.11</time><div><h3>株式会社分析屋 入社</h3><p>データサイエンティスト見習いとしてSESで従事し、株式会社ジールに常駐。生成AIを活用したWebアプリケーションの開発を担当した。</p></div></li><li><time>2025.04 - Present</time><div><h3>フリーランス独立</h3><p>株式会社ジールと直接契約を結び、業務委託で開発に従事している。</p></div></li></ol></div></section><section aria-labelledby="projects"><h2 id="projects" class="command"><span class="prompt" aria-hidden="true">$</span> <span class="typed">ls works</span><span class="section-index" aria-hidden="true">[04]</span></h2><div class="output"><p class="note"># 作ったものや携わったもの / 3 projects</p><ol class="projects"><li class="project"><h3>tools</h3><p>個人用のツール集。Twitchコメント読み上げ（yomiage）、動画ビュワー、マークダウンエディタを1つにまとめたもの。</p><div class="project-links"><div><span class="link-label">url</span><a href="https://tools.fumiya.dev/">https://tools.fumiya.dev/</a></div><div><span class="link-label">source</span><a href="https://github.com/smdhnz/tools">https://github.com/smdhnz/tools</a></div></div></li><li class="project"><h3>STORYAI</h3><p>生成AIと融合したAI感情分析SaaS</p><div class="project-links"><div><span class="link-label">url</span><a href="https://storyai.app/">https://storyai.app/</a></div></div></li><li class="project"><h3>Board Verse</h3><p>ユーザー登録不要でURLを共有するだけで即座に対戦可能なオンラインボードゲームプラットフォーム。</p><div class="project-links"><div><span class="link-label">url</span><a href="https://board-verse.vercel.app/">https://board-verse.vercel.app/</a></div></div></li></ol></div></section>
+<div class="session-end"><span># end of output.</span><span>Fumiya Kato / smdhnz</span></div>
+<div class="terminal" aria-label="ターミナル">
+<div id="terminal-history" class="terminal-history" role="log" aria-live="polite" aria-relevant="additions"></div>
+<form id="terminal-form" class="terminal-form" autocomplete="off">
+<label for="terminal-input">$<span class="sr-only"> コマンド入力</span></label>
+<input id="terminal-input" class="terminal-input" type="text" placeholder=" " autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" aria-describedby="terminal-hint">
+<span class="cursor" aria-hidden="true"></span>
+</form><span id="terminal-hint" class="sr-only">help でコマンド一覧。Enter で実行、上下キーで履歴を選択できます。</span>
+</div>
+</main>
+<script>
+(() => {
+  const now = new Date();
+  const birthdayPending = now.getMonth() < 11 || (now.getMonth() === 11 && now.getDate() < 8);
+  document.getElementById('age').textContent = `${now.getFullYear() - 1999 - Number(birthdayPending)}歳`;
+  document.getElementById('birth').hidden = false;
+  const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const boot = document.getElementById('boot-text');
+  let terminalFocused = false;
+  const commands = Array.from(document.querySelectorAll('.typed'));
+  commands.forEach(el => { el.dataset.command = el.textContent; });
+  const sections = Array.from(document.querySelectorAll('main > section'));
+  const banner = document.querySelector('.banner');
+  const cells = Array.from(banner.querySelectorAll('.ascii-row span'));
+  const shades = ' .:-=+*#%@';
+  const pointer = { x: -1000, y: -1000, active: false };
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  const rain = document.createElement('canvas');
+  const trail = document.createElement('canvas');
+  rain.className = trail.className = 'motion-canvas';
+  trail.id = 'ascii-trail';
+  [rain, trail].forEach(canvas => { canvas.setAttribute('aria-hidden', 'true'); document.body.prepend(canvas); });
+  const rainCtx = rain.getContext('2d');
+  const trailCtx = trail.getContext('2d');
+  let width = 0, height = 0, columns = [], particles = [];
+  let bannerRect, bannerVisible = true, frame = 0, previous = 0, lastPaint = 0, clock = 0;
+  const typing = new Map();
+  let bootFinished = false;
+  function measure() {
+    width = innerWidth; height = innerHeight;
+    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    [rain, trail].forEach(canvas => {
+      canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
+      canvas.getContext('2d')?.setTransform(dpr, 0, 0, dpr, 0, 0);
+    });
+    columns = Array.from({ length: Math.ceil(width / 42) }, (_, i) => ({ x: i * 42, y: Math.random() * height, speed: 18 + Math.random() * 28 }));
+    bannerRect = banner.getBoundingClientRect();
+  }
+  function reveal(section) {
+    const el = section.querySelector('.typed');
+    el.style.clipPath = '';
+    section.classList.remove('motion-pending', 'command-running');
+    typing.delete(section);
+  }
+  function completeMotion() {
+    bootFinished = true;
+    sections.forEach(reveal);
+    boot.textContent = 'portfolio session ready.';
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const section = entry.target;
+      if (preference.matches || terminalFocused) reveal(section);
+      else if (section.classList.contains('motion-pending') && !typing.has(section)) {
+        section.classList.add('command-running');
+        typing.set(section, clock);
+      }
+      observer.unobserve(section);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+  const bannerObserver = new IntersectionObserver(entries => { bannerVisible = entries[0].isIntersecting; });
+  bannerObserver.observe(banner);
+  function drawPlasma() {
+    if (!bannerVisible) return;
+    const phase = clock * .0008;
+    const px = (pointer.x - bannerRect.left) / bannerRect.width * 80;
+    const py = (pointer.y - bannerRect.top) / bannerRect.height * 14;
+    cells.forEach((cell, index) => {
+      const y = Math.floor(index / 10), startX = index % 10 * 8;
+      let text = '', glow = 0;
+      for (let x = startX; x < startX + 8; x++) {
+        const influence = pointer.active ? Math.exp(-((x-px)**2 / 90 + (y-py)**2 / 12)) : 0;
+        glow = Math.max(glow, influence);
+        const wave = (Math.sin(x*.12+phase)+Math.sin(y*.38-phase*.8)+Math.sin(x*.08+y*.24+phase*.6))/3;
+        text += shades[Math.min(shades.length-1, Math.max(0, Math.round((wave+1)*.5*(shades.length-1)+influence*4)))];
+      }
+      cell.textContent = text;
+      cell.style.color = glow > .18 ? `hsl(${165 + glow * 70} 85% ${70 + glow * 20}%)` : '';
+      cell.style.textShadow = glow > .35 ? '0 0 10px currentColor' : '';
+    });
+  }
+  function tick(now) {
+    frame = 0;
+    if (preference.matches || document.hidden || terminalFocused) { previous = 0; return; }
+    const dt = previous ? Math.min(now - previous, 80) : 0;
+    previous = now; clock += dt;
+    typing.forEach((start, section) => {
+      const el = section.querySelector('.typed');
+      const progress = Math.min(1, (clock-start)/(el.dataset.command.length*60+120));
+      el.style.clipPath = `inset(0 ${(1-progress)*100}% 0 0)`;
+      if (progress === 1) reveal(section);
+    });
+    if (!bootFinished) {
+      boot.textContent = 'portfolio session ready.'.slice(0, Math.floor(clock/28));
+      bootFinished = clock >= 700;
+    }
+    if (now-lastPaint > 50) {
+      const step = Math.min((now-lastPaint)/1000, .1); lastPaint = now;
+      drawPlasma();
+      if (rainCtx) {
+        rainCtx.clearRect(0,0,width,height); rainCtx.font = '13px monospace';
+        columns.forEach((col, index) => {
+          col.y += col.speed * step;
+          if (col.y > height+130) col.y = -20;
+          for (let j=0;j<8;j++) {
+            rainCtx.fillStyle = `rgba(126,217,160,${.065*(1-j/8)})`;
+            rainCtx.fillText('01:<>/{}[]'[Math.floor(clock/200+index*7+j)%10], col.x, col.y-j*18);
+          }
+        });
+      }
+      if (trailCtx) {
+        trailCtx.clearRect(0,0,width,height); trailCtx.font = '14px monospace';
+        particles = particles.filter(p => clock-p.born < 650);
+        particles.forEach(p => {
+          const age = (clock-p.born)/650;
+          trailCtx.fillStyle = `rgba(126,217,223,${(1-age)*.65})`;
+          trailCtx.fillText(p.char,p.x+10,p.y-18-age*22);
+        });
+      }
+    }
+    frame = requestAnimationFrame(tick);
+  }
+  function resumeMotion() { if (!frame && !preference.matches && !terminalFocused && !document.hidden) frame = requestAnimationFrame(tick); }
+  function pauseMotion() { cancelAnimationFrame(frame); frame=0; previous=0; particles=[]; }
+  let lastPointer = 0;
+  window.addEventListener('pointermove', event => {
+    if (!finePointer.matches || preference.matches || terminalFocused) return;
+    pointer.x=event.clientX; pointer.y=event.clientY; pointer.active=true;
+    if (clock-lastPointer > 28) {
+      particles.push({x:pointer.x,y:pointer.y,born:clock,char:'01{}<>/*+'[Math.floor(Math.random()*9)]});
+      if (particles.length>24) particles.shift();
+      lastPointer=clock;
+    }
+  }, {passive:true});
+  document.documentElement.addEventListener('pointerleave', () => { pointer.active=false; });
+  window.addEventListener('blur', () => { pointer.active=false; });
+  window.addEventListener('resize', measure, {passive:true});
+  window.addEventListener('scroll', () => { bannerRect=banner.getBoundingClientRect(); }, {passive:true});
+  document.addEventListener('visibilitychange', () => { if(document.hidden) pauseMotion(); else resumeMotion(); });
+  document.addEventListener('focusin', event => {
+    const section=event.target.closest('section');
+    if(section) reveal(section);
+  });
+  preference.addEventListener('change', () => {
+    pauseMotion(); completeMotion();
+    if(preference.matches) {
+      rainCtx?.clearRect(0,0,width,height); trailCtx?.clearRect(0,0,width,height);
+      cells.forEach(cell => {cell.style.color='';cell.style.textShadow='';});
+    } else resumeMotion();
+  });
+  measure();
+  if (!preference.matches) {
+    sections.forEach(section => { section.classList.add('motion-pending'); observer.observe(section); });
+    document.body.classList.add('motion-ready');
+    resumeMotion();
+  }
+
+  console.log(`%c
+  +---------------------------+
+  |  portfolio / secret shell |
+  |  > visitor detected.      |
+  |  > coffee not found.      |
+  +---------------------------+
+`, 'color:#a5e37e;font-family:monospace');
+  console.log('%cようこそ、ソースの裏側へ。ここにバグがあっても仕様と呼んでください。', 'color:#7ed9df');
+  console.log('%cページの一番下のプロンプトで help と打ってみてください。一覧にないコマンドも、どこかに。', 'color:#ecd184');
+
+  const form = document.getElementById('terminal-form');
+  const input = document.getElementById('terminal-input');
+  const output = document.getElementById('terminal-history');
+  const history = [];
+  let historyIndex = 0, draft = '', secret = null, remaining = 7;
+  function write(text, className = '') {
+    const line = document.createElement('div');
+    line.className = `terminal-entry ${className}`;
+    line.textContent = text;
+    output.append(line);
+  }
+  input.addEventListener('focus', () => {
+    terminalFocused = true;
+    pauseMotion();
+    document.body.classList.add('terminal-active');
+  });
+  input.addEventListener('blur', () => {
+    terminalFocused = false;
+    document.body.classList.remove('terminal-active');
+    resumeMotion();
+  });
+  form.addEventListener('click', event => {
+    if (event.target === form) input.focus();
+  });
+  function execute(raw) {
+    const value = raw.trim();
+    const [command, ...args] = value.split(/\s+/);
+    const argument = args.join(' ');
+    if (command === 'clear') { output.replaceChildren(); return; }
+    if (command === 'help') {
+      write('help                 コマンド一覧\nwhoami / skills      プロフィール / スキルへ\ncareer / projects    経歴 / 制作物へ（ls works でも可）\nls / pwd / date      一覧 / 現在地 / 日時\necho <text>          入力をそのまま表示\ngithub               GitHub URL\nclear                表示履歴を消去\nexit / logout        セッションを終了…？');
+    } else if (['whoami', 'skills', 'career', 'projects'].includes(command) || (command === 'ls' && argument === 'works')) {
+      const id = command === 'ls' ? 'projects' : command;
+      const heading = document.getElementById(id);
+      reveal(heading.closest('section'));
+      write(`${id}: セクションへ移動しました。`);
+      input.blur();
+      heading.scrollIntoView({ behavior: preference.matches ? 'instant' : 'smooth', block: 'start' });
+    } else if (command === 'ls') write('whoami  skills  career  works/');
+    else if (command === 'pwd') write('/home/visitor/portfolio');
+    else if (command === 'date') write(new Date().toLocaleString('ja-JP', { timeZoneName: 'short' }));
+    else if (command === 'echo') write(raw.replace(/^\s*echo(?:\s)?/, ''));
+    else if (command === 'github') {
+      const line = document.createElement('div');
+      line.className = 'terminal-entry';
+      const link = document.createElement('a');
+      link.href = 'https://github.com/smdhnz'; link.textContent = link.href;
+      line.append(link); output.append(line);
+    } else if (command === 'sudo') write('visitor は sudoers に登録されていません。コーヒーでの交渉は可能です。');
+    else if (command === 'exit' || command === 'logout') {
+      secret = null; write('接続は切れませんでした。もう少しゆっくりしていってください。');
+    } else if (command === 'vim') write('ここでは :q なしで脱出できます。安心してください。');
+    else if (command === 'emacs') write('OS の起動には、少しメモリが足りないようです。');
+    else if (command === 'rm' && args.includes('-rf') && args.includes('/')) write('このポートフォリオには愛着があるので、消さずに置いておきます。');
+    else if (command === 'coffee') write('隠しメニューを発見。淹れたてをどうぞ。\n   ( (\n    ) )\n  .----.\n  |    |)\n  `----\'\n  ~~~~~~');
+    else if (command === 'game') {
+      secret = Math.floor(Math.random() * 100) + 1; remaining = 7;
+      write('秘密の扉を発見。1〜100 の整数を7回以内に当ててください。\n数字を入力して Enter。Esc または exit で中断。game で再挑戦。');
+    } else if (secret !== null && /^\d+$/.test(value) && Number(value) >= 1 && Number(value) <= 100) {
+      remaining--;
+      const guess = Number(value);
+      if (guess === secret) { write(`ACCESS GRANTED / 正解は ${secret}！ ${(remaining + 1) * 100}点獲得。game で再挑戦。`); secret = null; }
+      else if (!remaining) { write(`ACCESS DENIED / 正解は ${secret} でした。game で再挑戦。`); secret = null; }
+      else write(`${guess} → もっと${guess < secret ? '大きい' : '小さい'}数字です。残り ${remaining}回。`);
+    } else if (secret !== null) write('1〜100 の整数を入力してください。回数は減りません。Esc で中断できます。');
+    else write(`${command}: command not found. help で一覧を確認できます。`);
+  }
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (event.isComposing || !input.value.trim()) return;
+    const raw = input.value;
+    history.push(raw); historyIndex = history.length; draft = '';
+    input.value = '';
+    write(`$ ${raw}`, 'terminal-echo');
+    execute(raw);
+    if (document.activeElement === input) input.scrollIntoView({ block: 'nearest' });
+  });
+  input.addEventListener('keydown', event => {
+    event.stopPropagation();
+    if (event.isComposing || event.keyCode === 229) return;
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      event.preventDefault();
+      if (historyIndex === history.length) draft = input.value;
+      historyIndex = Math.max(0, Math.min(history.length, historyIndex + (event.key === 'ArrowUp' ? -1 : 1)));
+      input.value = historyIndex === history.length ? draft : history[historyIndex];
+      input.setSelectionRange(input.value.length, input.value.length);
+    } else if (event.key === 'Escape' && secret !== null) {
+      event.preventDefault(); secret = null; write('探索を中断しました。game で再挑戦できます。');
+    }
+  });
+})();
+</script>
+</body>
+</html>
