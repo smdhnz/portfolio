@@ -1,7 +1,2 @@
-# portfolio
-
-Fumiya Kato のポートフォリオ。単一の `index.html` だけでできています。
-
-## プレビュー
-
+htmlプレビュー
 https://htmlpreview.github.io/?https://github.com/smdhnz/portfolio/blob/main/index.html
