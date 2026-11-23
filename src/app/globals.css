@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/*
+ * デザイントークン
+ * 色は「紙・墨・朱」の3役のみ。補助色はすべて墨の不透明度から作る。
+ * 文字サイズ・字間・余白はここで定義し、コンポーネント側で数値を直書きしない。
+ */
+@theme {
+  /* 色 */
+  --color-*: initial;
+  --color-paper: #f6f0e3;
+  --color-ink: #211c14;
+  --color-shu: #b8402a;
+  --color-transparent: transparent;
+  --color-ink-muted: color-mix(in srgb, var(--color-ink) 60%, transparent);
+  --color-rule: color-mix(in srgb, var(--color-ink) 22%, transparent);
+  --color-rule-strong: var(--color-ink);
+
+  /* 書体 */
+  --font-serif:
+    var(--font-fraunces), var(--font-shippori), "Hiragino Mincho ProN",
+    "Yu Mincho", serif;
+  --font-mincho:
+    var(--font-shippori), "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* 文字サイズ（流体） */
+  /* ヒーローの名前：sm 以上は1行（Fumiya Kato）、sm 未満は2行（Fumiya / Kato） */
+  --text-display: clamp(4.5rem, 16vw, 20rem);
+  --text-display--line-height: 0.84;
+  --text-display-stacked: clamp(4.5rem, 29vw, 11rem);
+  --text-display-stacked--line-height: 0.86;
+  --text-section: clamp(2.5rem, 7vw, 6rem);
+  --text-section--line-height: 1;
+  --text-work: clamp(2.75rem, 9.5vw, 8.5rem);
+  --text-work--line-height: 0.92;
+  --text-statement: clamp(2rem, 5.2vw, 4.25rem);
+  --text-statement--line-height: 1.2;
+  --text-closing: clamp(2.25rem, 8vw, 7rem);
+  --text-closing--line-height: 1.15;
+  --text-contact: clamp(2rem, 6vw, 5rem);
+  --text-contact--line-height: 1.05;
+  --text-org: clamp(1.35rem, 5.5vw, 2.5rem);
+  --text-org--line-height: 1.4;
+  --text-hanko: clamp(2.75rem, 6vw, 4.5rem);
+  --text-lead: clamp(1.25rem, 2.1vw, 1.75rem);
+  --text-lead--line-height: 1.5;
+  --text-body: 1rem;
+  --text-body--line-height: 1.9;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.6;
+
+  /* 字間 */
+  --tracking-display: -0.045em;
+  --tracking-heading: -0.025em;
+  --tracking-label: 0.16em;
+  --tracking-mincho: 0.08em;
+
+  /* 余白 */
+  --spacing-gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --spacing-section: clamp(6rem, 13vw, 11rem);
+  --spacing-row: clamp(1.25rem, 2.4vw, 2rem);
+
+  /* モーション */
+  --ease-paper: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-serif);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    min-height: 100svh;
+    overflow-x: hidden;
+  }
+
+  /* 紙の質感：静止した極薄のノイズを全面に敷く */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.13 0 0 0 0 0.11 0 0 0 0 0.08 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background: var(--color-shu);
+    color: var(--color-paper);
+  }
+
+  a,
+  button {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-shu);
+    outline-offset: 4px;
+  }
+}
+
+@layer components {
+  /* 等幅の小ラベル（柱・通し番号・頁番号） */
+  .label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  /* 本文の和文 */
+  .mincho {
+    font-family: var(--font-mincho);
+    letter-spacing: var(--tracking-mincho);
+    font-feature-settings: "palt" 0;
+  }
+
+  /* 外部リンク：色だけが変わる（動かさない） */
+  .ink-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    text-decoration-color: var(--color-rule);
+  }
+  .ink-link:hover {
+    color: var(--color-shu);
+    text-decoration-color: currentColor;
+  }
+
+  /* 唯一のモーション：現れるときのフェード＋わずかな上昇 */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.9s var(--ease-paper),
+      transform 0.9s var(--ease-paper);
+  }
+  .reveal[data-shown="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
