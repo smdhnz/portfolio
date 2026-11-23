@@ -26,25 +26,41 @@
 
   /* 文字サイズ（流体） */
   /* ヒーローの名前：sm 以上は1行（Fumiya Kato）、sm 未満は2行（Fumiya / Kato） */
-  --text-display: clamp(4.5rem, 16vw, 20rem);
+  --text-display: clamp(4.5rem, 19vw, 30rem);
   --text-display--line-height: 0.84;
   --text-display-stacked: clamp(4.5rem, 29vw, 11rem);
   --text-display-stacked--line-height: 0.86;
+  /* ヒーローの縦書きの名前（加藤史也）。4字＋判子が画面の高さに迫る大きさ */
+  --text-tategaki: clamp(6rem, 19svh, 13rem);
+  --text-tategaki--line-height: 1;
+  /* モバイルでは右上に小さく置き、横書きと重ねない */
+  --text-tategaki-sm: clamp(2.75rem, 12vw, 4.25rem);
+  --text-tategaki-sm--line-height: 1;
+  --text-role: clamp(1.375rem, 2.6vw, 2.25rem);
+  --text-role--line-height: 1.3;
   --text-section: clamp(2.5rem, 7vw, 6rem);
   --text-section--line-height: 1;
-  --text-work: clamp(2.75rem, 9.5vw, 8.5rem);
-  --text-work--line-height: 0.92;
-  --text-statement: clamp(2rem, 5.2vw, 4.25rem);
-  --text-statement--line-height: 1.2;
-  --text-closing: clamp(2.25rem, 8vw, 7rem);
-  --text-closing--line-height: 1.15;
+  /* 見出し右端の縦書きラベル（柱） */
+  --text-pillar: clamp(0.625rem, 1.1vw, 0.875rem);
+  --text-pillar--line-height: 1;
+  /* 目次の項目名 */
+  --text-contents: clamp(1.5rem, 3.4vw, 2.75rem);
+  --text-contents--line-height: 1.1;
+  /* 先頭作品（Torunel）だけの特大タイトル */
+  --text-work-feature: clamp(3.75rem, 16vw, 15rem);
+  --text-work-feature--line-height: 0.86;
+  --text-work: clamp(2.5rem, 7vw, 6.25rem);
+  --text-work--line-height: 0.95;
   --text-contact: clamp(2rem, 6vw, 5rem);
   --text-contact--line-height: 1.05;
   --text-org: clamp(1.35rem, 5.5vw, 2.5rem);
   --text-org--line-height: 1.4;
-  --text-hanko: clamp(2.75rem, 6vw, 4.5rem);
+  /* 奥付の著者印 */
+  --text-seal: 1.75rem;
   --text-lead: clamp(1.25rem, 2.1vw, 1.75rem);
   --text-lead--line-height: 1.5;
+  --text-colophon: 0.8125rem;
+  --text-colophon--line-height: 2;
   --text-body: 1rem;
   --text-body--line-height: 1.9;
   --text-label: 0.6875rem;
@@ -124,6 +140,36 @@
     font-family: var(--font-mincho);
     letter-spacing: var(--tracking-mincho);
     font-feature-settings: "palt" 0;
+  }
+
+  /* 縦書き（和文の名前・柱） */
+  .tategaki {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  /*
+   * 横書きの名前を縦書きの名前の手前に重ねるための「抜き」。
+   * 紙色の縁取りを塗りの下に描き、交差部分で縦書きの墨を細く切り抜く。
+   */
+  .knockout {
+    -webkit-text-stroke: 0.05em var(--color-paper);
+    paint-order: stroke fill;
+  }
+
+  /* 目次の点線リーダー（……）。行の残り幅を点で埋め、ベースライン近くに置く */
+  .leader {
+    flex: 1 1 auto;
+    min-width: 2rem;
+    height: 1em;
+    background-image: radial-gradient(
+      circle,
+      currentColor 0.07em,
+      transparent 0.085em
+    );
+    background-size: 0.5em 0.5em;
+    background-repeat: repeat-x;
+    background-position: left bottom 0.05em;
   }
 
   /* 外部リンク：色だけが変わる（動かさない） */

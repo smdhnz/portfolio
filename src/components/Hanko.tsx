@@ -6,7 +6,7 @@ type HankoProps = {
 
 /**
  * 朱の判子。朱の四角に白抜き（紙色）の「加」。CSS だけで描く。
- * 置くのはヒーローとフッターの2か所だけ。
+ * 著者印として、ヒーローの縦書き署名の脇と奥付の2か所だけに置く。
  */
 export function Hanko({ className = "" }: HankoProps) {
   return (

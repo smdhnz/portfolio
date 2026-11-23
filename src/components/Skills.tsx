@@ -6,7 +6,7 @@ import { Section } from "./Section";
 /** 索引形式：グループ名（等幅）の下に項目を罫線区切りで縦に積む */
 export function Skills() {
   return (
-    <Section index={2} title="Skills">
+    <Section index={2}>
       <div className="grid grid-cols-1 gap-x-[clamp(2rem,6vw,6rem)] gap-y-[calc(var(--spacing-section)*0.4)] md:grid-cols-2">
         {skills.map((group, g) => (
           <Reveal key={group.name}>

@@ -6,7 +6,7 @@ import { Section } from "./Section";
 /** 大きなセリフのリンク一覧（罫線区切り） */
 export function Contact() {
   return (
-    <Section index={5} title="Contact">
+    <Section index={5}>
       <ul className="border-t border-rule">
         {contacts.map((contact) => (
           <Reveal

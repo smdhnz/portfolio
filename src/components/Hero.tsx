@@ -5,8 +5,12 @@ import { Reveal } from "./Reveal";
 const [first, last] = site.nameLines;
 
 /**
- * ヒーロー。置くのは名前・判子・宣言・SCROLL だけ。
- * 改行位置：デスクトップは1行、モバイル（sm 未満）は名と姓の間で折る。
+ * ヒーロー。縦書きの「加藤史也」と横書きの「Fumiya Kato」を交差させる。
+ *
+ * md 以上：縦書きは右端に絶対配置し、天地中央に置く。横書きは通常の流れで
+ * 左から組み、行末が縦書きの柱を横切る。重なりは z-index で横書きを手前に出し、
+ * 紙色の縁取り（.knockout）で交差部分の墨を切り抜く。
+ * md 未満：縦書きは右上に小さく流れの中で置き、横書きはその下に組む（重ねない）。
  */
 export function Hero() {
   return (
@@ -14,23 +18,38 @@ export function Hero() {
       aria-label="Fumiya Kato"
       className="flex min-h-[calc(100svh-2.75rem)] flex-col px-gutter"
     >
-      <div className="flex flex-1 flex-col justify-center pt-[12vh] pb-[8vh]">
-        <Reveal delay={80}>
-          <h1 className="font-serif text-display-stacked font-light tracking-display whitespace-nowrap sm:text-display">
-            <span className="block sm:inline">{first}</span>{" "}
-            <span className="inline-flex items-start">
-              {last}
-              <Hanko className="mt-[0.12em] ml-[0.1em] w-[1.15em] text-[0.22em] sm:text-[0.17em]" />
+      <div className="relative flex flex-1 flex-col pt-[6vh] pb-[6vh] md:justify-center md:pt-[10vh] md:pb-[8vh]">
+        {/* 縦書きの署名＋著者印 */}
+        <Reveal
+          delay={80}
+          className="z-0 self-end md:absolute md:top-1/2 md:right-0 md:-translate-y-1/2"
+        >
+          <p
+            lang="ja"
+            className="flex flex-row-reverse items-end gap-[0.12em] text-tategaki-sm md:text-tategaki"
+          >
+            <span className="tategaki mincho font-medium tracking-[0.02em]">
+              {site.nameJa}
             </span>
+            <Hanko className="mb-[0.06em] w-[1.15em] text-[0.24em]" />
+          </p>
+        </Reveal>
+
+        <Reveal delay={240} className="relative z-10 mt-[5vh] md:mt-0">
+          <h1
+            lang="en"
+            className="knockout font-serif text-display-stacked font-light tracking-display whitespace-nowrap sm:text-display"
+          >
+            <span className="block sm:inline">{first}</span> {last}
           </h1>
         </Reveal>
 
-        <div className="mt-[clamp(2.5rem,7vh,5rem)] flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-8">
-          <Reveal delay={320}>
-            <p className="mincho text-statement font-medium">{site.statement}</p>
+        <div className="relative z-10 mt-[clamp(2rem,6vh,4.5rem)] flex flex-col gap-2 md:max-w-[60%]">
+          <Reveal delay={400}>
+            <p className="mincho text-role font-medium">{site.role}</p>
           </Reveal>
-          <Reveal delay={480}>
-            <p className="label text-ink-muted">{site.statementEn}</p>
+          <Reveal delay={520}>
+            <p className="label text-ink-muted">{site.roleEn}</p>
           </Reveal>
         </div>
       </div>

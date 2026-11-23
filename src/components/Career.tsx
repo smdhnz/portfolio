@@ -5,7 +5,7 @@ import { Section } from "./Section";
 /** 年表：年（等幅）／所属（セリフ大）／説明（短文） */
 export function Career() {
   return (
-    <Section index={3} title="Career">
+    <Section index={3}>
       <ol>
         {career.map((entry) => (
           <Reveal

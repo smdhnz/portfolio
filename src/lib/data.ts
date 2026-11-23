@@ -37,12 +37,43 @@ export const site = {
   masthead: { left: "PORTFOLIO — 2026", right: "KASHIWA, JAPAN" },
   // 改行位置を手で決めるため、行ごとに分けて持つ
   nameLines: ["Fumiya", "Kato"],
-  statement: "作る。整える。",
-  // フッターでは句の途中では折らないため、句ごとに分けて持つ
-  statementParts: ["作る。", "整える。"],
-  statementEn: "BUILD, AND REFINE.",
+  // ヒーローで縦に組む和文の名前
+  nameJa: "加藤史也",
+  // ヒーローで名前の下に置く事実（キャッチコピーは置かない）
+  role: "フリーランスエンジニア",
+  roleEn: "FREELANCE ENGINEER — KASHIWA, JAPAN",
   hankoChar: "加",
   copyright: "© 2026 Fumiya Kato",
+} as const;
+
+export type SectionEntry = {
+  /** アンカー id（#profile など） */
+  id: string;
+  title: string;
+  /** 見出し右端に縦書きで置く和文ラベル（本の柱） */
+  pillar: string;
+  /** 目次に載せる頁番号風の番号 */
+  page: number;
+};
+
+/** 本の構成。目次とセクション見出しはここから作る（並び順 = 通し番号） */
+export const sections: SectionEntry[] = [
+  { id: "profile", title: "Profile", pillar: "プロフィール", page: 3 },
+  { id: "skills", title: "Skills", pillar: "技能", page: 7 },
+  { id: "career", title: "Career", pillar: "経歴", page: 13 },
+  { id: "works", title: "Works", pillar: "作品", page: 19 },
+  { id: "contact", title: "Contact", pillar: "連絡先", page: 27 },
+];
+
+/** 奥付 */
+export const colophon = {
+  title: "ポートフォリオ",
+  rows: [
+    { label: "著者", value: "加藤史也", seal: true },
+    { label: "発行", value: "2026年11月" },
+    { label: "所在地", value: "千葉県柏市" },
+  ],
+  url: "https://portfolio.fumiya.dev",
 } as const;
 
 export const profile: ProfileItem[] = [

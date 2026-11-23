@@ -1,5 +1,6 @@
 import { Career } from "@/components/Career";
 import { Contact } from "@/components/Contact";
+import { Contents } from "@/components/Contents";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Masthead } from "@/components/Masthead";
@@ -13,6 +14,7 @@ export default function Home() {
       <Masthead />
       <main>
         <Hero />
+        <Contents />
         <Profile />
         <Skills />
         <Career />

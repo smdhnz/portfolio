@@ -4,7 +4,7 @@ import { Section } from "./Section";
 
 export function Profile() {
   return (
-    <Section index={1} title="Profile">
+    <Section index={1}>
       <dl>
         {profile.map((item) => (
           <Reveal
